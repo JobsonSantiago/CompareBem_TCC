@@ -1,0 +1,970 @@
+body {
+    background-color: #F8F9FA;
+    color: #000;
+    padding-right: calc(100vw - 100%);
+    font-family: 'Montserrat', sans-serif; /* Usando a fonte Montserrat */
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif; /* Usando a fonte Montserrat */
+}
+
+h2 {
+    color: #1567be; /* Título mais escuro */
+}
+
+.navbar {
+    background: linear-gradient(to right, #007bff, #0056b3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    position: fixed; /* Mantenha se desejar que a navbar seja fixa */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1030;
+    padding: 0 15px;
+}
+
+.container {
+    padding-top: 80px; /* Espaço para a navbar */
+}
+
+.logo-image {
+    height: 125px; /* Define o tamanho da logo conforme desejado */
+    max-height: 100%; /* Garante que a logo não ultrapasse a altura da navbar */
+}
+
+
+.contact-info, .social-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (min-width: 768px) {
+    .contact-info, .social-icons {
+        justify-content: flex-start;
+    }
+}
+
+/* Alinhamento de ícones de redes sociais */
+.social-icons {
+    display: flex;
+    justify-content: center;
+}
+
+@media (min-width: 768px) {
+    .social-icons {
+        justify-content: start;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-info, .social-icons {
+        justify-content: center;
+    }
+    .contact-info {
+        margin-bottom: 10px;
+    }
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    .logo-image {
+        height: 40px;
+    }
+
+    .conta-image {
+        height: 40px;
+    }
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.conta-image {
+    width: 50px; /* Ajuste conforme necessário */
+    height: auto; /* Mantém a proporção da imagem */
+    cursor: pointer;
+    max-width: 100%; /* Garante que a imagem não ultrapasse o espaço disponível */
+    display: block; /* Garante que não tenha margens ou padding indesejado */
+}
+
+.navbar-nav {
+    flex-direction: row;
+}
+
+.navbar-toggler {
+    border: none;
+    background-color: transparent;
+}
+
+.navbar-logo,
+.navbar-icon {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-collapse {
+    justify-content: center;
+}
+
+.nav-item {
+    margin: 0 10px;
+}
+.nav-item.dropdown:hover .dropdown-menu {
+    visibility: visible;
+    opacity: 1;
+}
+
+@media (max-width: 576px) {
+    
+    .navbar-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar-nav .nav-link {
+        color: #000 !important;
+    }
+
+    /* Remove o fundo do dropdown em celular */
+    .dropdown-menu {
+        background: transparent; /* Remove o fundo azul */
+        position: absolute; /* Garante que o dropdown fique acima de outros elementos */
+        left: 0; /* Alinha o dropdown à esquerda do navbar */
+        top: 100%; /* Coloca o dropdown logo abaixo do botão */
+        margin-top: 0; /* Remove margens adicionais */
+        z-index: 1000; /* Garante que o dropdown fique acima de outros elementos */
+    }
+
+      .dropdown-item {
+        background: transparent; /* Remove o fundo dos itens do dropdown */
+        color: #000; /* Mantenha o texto preto */
+    }
+
+    .dropdown-item:hover {
+        background: transparent; /* Remove o fundo ao passar o mouse */
+    }
+
+    .navbar-collapse {
+        margin-top: 70px; /* Espaço abaixo do botão do menu */
+        text-align: center;
+    }
+
+    .navbar-nav .nav-item {
+        margin: 10px 0; /* Menos espaçamento para telas menores */
+    }
+
+    .navbar-logo, .navbar-icon {
+        position: absolute;
+        top: 10px;
+    }
+
+    .navbar-logo {
+        position: absolute;
+        top: 0;
+        left: 15px;
+    }
+
+    .navbar-icon {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+    }
+
+    .contact-info i, .social-icons i {
+        margin-right: 8px;
+    }
+
+    .footer-title {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    @media (min-width: 768px) {
+        .footer-title {
+            text-align: left;
+        }
+    }
+
+    .footer a {
+        font-size: 0.9rem;
+    }
+
+    .logo-image {
+        height: 0px;
+        margin-top: 0px;
+    }
+
+    .card {
+        width: 100%; /* Cards ocupam 100% da largura na tela pequena */
+        max-width: none;
+    }
+
+    .navbar-brand {
+        display: none; /* Adicione esta linha para ocultar a logo */
+    }
+
+    .navbar-toggler {
+        margin-left: 15px; /* Alinha o botão do menu à esquerda */
+        position: relative; /* Posiciona o botão em relação ao seu pai */
+        z-index: 1; /* Garante que o botão fique acima de outros elementos */
+    }
+}
+
+/* Estilos para telas médias (a partir de 576px) */
+@media (min-width: 576px) and (max-width: 767px) {
+    .navbar-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar-nav .nav-link {
+        color: #000 !important;
+    }
+
+    /* Remove o fundo do dropdown em celular */
+    .dropdown-menu {
+        background: transparent; /* Remove o fundo azul */
+        position: absolute; /* Garante que o dropdown fique acima de outros elementos */
+        left: 0; /* Alinha o dropdown à esquerda do navbar */
+        top: 100%; /* Coloca o dropdown logo abaixo do botão */
+        margin-top: 0; /* Remove margens adicionais */
+        z-index: 1000; /* Garante que o dropdown fique acima de outros elementos */
+    }
+
+    .dropdown-item {
+        background: transparent; /* Remove o fundo dos itens do dropdown */
+        color: #000; /* Mantenha o texto preto */
+    }
+
+    .navbar-collapse {
+        margin-top: 70px; /* Espaço abaixo do botão do menu */
+        text-align: center;
+    }
+
+    .navbar-nav .nav-item {
+        margin: 10px 0; /* Menos espaçamento para telas menores */
+    }
+
+    .navbar-toggler {
+        margin-left: 15px; /* Alinha o botão do menu à esquerda */
+        position: relative; /* Posiciona o botão em relação ao seu pai */
+        z-index: 1; /* Garante que o botão fique acima de outros elementos */
+    }
+
+
+    .navbar-logo, .navbar-icon {
+        position: absolute;
+        top: 10px;
+    }
+
+    .navbar-logo {
+        position: absolute;
+        top: 0;
+        left: 15px;
+    }
+
+    .navbar-icon {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+    }
+
+    .logo-image {
+        height: 0px;
+        margin-top: 0px;
+    }
+
+    .navbar-brand {
+        display: none; /* Adicione esta linha para ocultar a logo */
+    }
+
+    .navbar-toggler {
+        margin-left: 15px; /* Alinha o botão do menu à esquerda */
+        position: relative; /* Posiciona o botão em relação ao seu pai */
+        z-index: 1; /* Garante que o botão fique acima de outros elementos */
+    }
+
+    /* Remove o fundo do dropdown em celular */
+    .dropdown-menu {
+        background: transparent; /* Remove o fundo azul */
+    }
+
+    .dropdown-item {
+        color: #000; /* Mantém o texto preto */
+    }
+
+    .dropdown-item:hover {
+        background: transparent; /* Remove o fundo ao passar o mouse */
+    }
+}
+
+/* Estilos para telas grandes (a partir de 768px) */
+@media (min-width: 768px) {
+    .navbar-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Remove o fundo do dropdown em celular */
+    .dropdown-menu {
+        background: transparent; /* Remove o fundo azul */
+        position: absolute; /* Garante que o dropdown fique acima de outros elementos */
+        left: 0; /* Alinha o dropdown à esquerda do navbar */
+        top: 100%; /* Coloca o dropdown logo abaixo do botão */
+        margin-top: 0; /* Remove margens adicionais */
+        z-index: 1000; /* Garante que o dropdown fique acima de outros elementos */
+    }
+
+    .navbar-collapse {
+        margin-top: 0; /* Remove o espaço abaixo do botão do menu */
+        text-align: left; /* Alinha o texto à esquerda */
+    }
+
+    .navbar-nav .nav-item {
+        margin: 0 20px; /* Aumenta a margem horizontal para os itens do menu */
+    }
+
+    .dropdown-menu {
+        background: #fff; /* Define uma cor de fundo para o dropdown */
+        border: 1px solid #ccc; /* Adiciona uma borda ao dropdown */
+    }
+
+    .dropdown-item {
+        color: #000; /* Mantém o texto preto */
+    }
+
+    .dropdown-item:hover {
+        background: #f8f9fa; /* Altera o fundo ao passar o mouse */
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .navbar-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Remove o fundo do dropdown em celular */
+    .dropdown-menu {
+        background: transparent; /* Remove o fundo azul */
+        position: absolute; /* Garante que o dropdown fique acima de outros elementos */
+        left: 0; /* Alinha o dropdown à esquerda do navbar */
+        top: 100%; /* Coloca o dropdown logo abaixo do botão */
+        margin-top: 0; /* Remove margens adicionais */
+        z-index: 1000; /* Garante que o dropdown fique acima de outros elementos */
+    }
+
+    .navbar-nav .nav-link {
+        color: #000 !important;
+    }
+
+    /* Remove o fundo do dropdown em celular */
+    .dropdown-menu {
+        background: transparent; /* Remove o fundo azul */
+    }
+
+    .dropdown-item {
+        background: transparent; /* Remove o fundo dos itens do dropdown */
+        color: #000; /* Mantenha o texto preto */
+    }
+
+    .navbar-collapse {
+        margin-top: 70px; /* Espaço abaixo do botão do menu */
+        text-align: center;
+    }
+
+    .navbar-nav .nav-item {
+        margin: 10px 0; /* Menos espaçamento para telas menores */
+    }
+
+    .navbar-toggler {
+        margin-left: 15px; /* Alinha o botão do menu à esquerda */
+        position: relative; /* Posiciona o botão em relação ao seu pai */
+        z-index: 1; /* Garante que o botão fique acima de outros elementos */
+    }
+
+    .navbar-logo, .navbar-icon {
+        position: absolute;
+        top: 10px;
+    }
+
+    .navbar-logo {
+        position: absolute;
+        top: 0;
+        left: 15px;
+    }
+
+    .navbar-icon {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+    }
+
+    .logo-image {
+        height: 0px;
+        margin-top: 0px;
+    }
+
+    .navbar-brand {
+        display: none; /* Adicione esta linha para ocultar a logo */
+    }
+
+    .dropdown-menu {
+        background: transparent; /* Remove o fundo azul */
+    }
+
+    .dropdown-item {
+        color: #000; /* Mantém o texto preto */
+    }
+
+    .dropdown-item:hover {
+        background: transparent; /* Remove o fundo ao passar o mouse */
+    }
+}
+
+
+
+/* Estilo para o botão dropdown */
+.btn-link {
+    color: #ffffff; /* Cor do texto do botão */
+    padding: 0; /* Remover padding extra */
+    border: none; /* Remover bordas */
+    background: none; /* Remover fundo */
+    margin-left: 5px; /* Espaçamento à esquerda para separar do link "Produtos" */
+}
+
+/* Estilo para o ícone do dropdown (triângulo) */
+.btn-link .bi-chevron-down {
+    font-size: 1.25rem; /* Aumentar o tamanho do triângulo */
+    color: #ffffff; /* Cor do ícone */
+}
+
+/* Estilo para o dropdown menu */
+.dropdown-menu {
+    background: linear-gradient(to right, #007bff, #0056b3);
+    border-radius: 0.375rem;
+    margin-top: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    visibility: hidden; /* Mude de display para visibility */
+    opacity: 0; /* Controla a opacidade para animação suave */
+    transition: visibility 0.3s, opacity 0.3s; /* Animação suave */
+}
+
+.dropdown-item {
+    color: #ffffff; /* Cor do texto */
+    padding: 8px 16px; /* Espaçamento interno */
+}
+
+.dropdown-item:hover {
+    background-color: #343a40; /* Cor de fundo ao passar o mouse */
+    color: #ffffff;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+.product-image {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-image:hover {
+    transform: scale(1.05); /* Aumenta levemente a imagem */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra */
+}
+
+.modern-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.modern-card .promo-label {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.modern-card:hover .card-img-top {
+    transform: scale(1.1);
+}
+
+.modern-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+
+.navbar-nav .nav-item {
+    margin: 0 100px; /* Adiciona espaçamento horizontal entre os itens da navbar */
+}
+
+.navbar .nav-link {
+    color: #fff;
+}
+
+.navbar .nav-link.active {
+    color: #ccc;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.3rem; /* Ajusta o tamanho da fonte dos links da navbar */
+    padding: 10px 15px; /* Ajusta o padding dos links da navbar para melhorar a aparência */
+    color: #fff;
+}
+
+.navbar-nav .nav-link.active {
+    color: #ccc;
+}
+
+/* Centralizar texto no rodapé em dispositivos móveis */
+@media (max-width: 768px) {
+
+    .navbar-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    footer .row {
+        flex-direction: column; /* Empilha as colunas */
+        align-items: center; /* Centraliza todos os itens */
+        text-align: center; /* Centraliza o texto */
+    }
+
+    .navbar-nav .nav-link {
+        color: #000 !important;
+    }
+    
+    footer .col-md-2, 
+    footer .col-md-3 {
+        width: 100%; /* Colunas ocupam 100% da largura */
+        text-align: center; /* Centralizar conteúdo */
+    }
+    
+    footer .footer-title {
+        margin-bottom: 0.5rem; /* Ajuste o espaçamento do título */
+        
+    }
+}
+
+    footer .container {
+        padding: 1rem; /* Reduz o padding em dispositivos pequenos */
+    }
+
+.navbar .btn-outline-light {
+    color: #fff;
+    border-color: #fff;
+}
+
+.input-group-lg .form-control {
+    background-color: #e8e8f7;
+    border: none;
+    border-radius: 20px 0 0 20px;
+}
+
+.input-group-lg .btn {
+    border-radius: 0 20px 20px 0;
+}
+
+/* Barra de pesquisa */
+.search-bar {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.search-bar input[type="text"] {
+    width: 70%; /* Define a largura da barra de pesquisa */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-bar button {
+    padding: 10px 20px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Carrossel com largura igual à barra de pesquisa */
+.carousel {
+    width: 70%; /* Define a largura igual à da barra de pesquisa */
+    margin: 20px auto; /* Centraliza o carrossel */
+}
+
+.carousel-item img {
+    height: 350px; /* Mantém a altura do carrossel */
+    width: 100%;
+    max-width: 1400px;
+    object-fit: cover;
+    margin: 0 auto; /* Centraliza a imagem */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 576px) {
+    .product-card {
+        max-width: 100%; /* Ocupa toda a largura */
+        margin: 10px 0;
+    }
+}
+
+
+.card {
+    border: none;
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+    transition: transform 0.2s; /* Transição suave */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: transform 0.3s;
+}
+
+/* Estilos Gerais */
+footer {
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9rem;
+    color: #c1c1c1;
+}
+
+.footer-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: #00adb5;
+}
+
+.social-icon {
+    color: #00adb5;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #02e7f2;
+}
+
+/* Links no rodapé */
+footer a {
+    color: #e0e0e0; /* Tom mais claro para melhor visibilidade */
+    text-decoration: none;
+}
+
+footer .row.align-items-start {
+    height: 100%; /* Garante que as colunas ocupem o mesmo espaço */
+}
+
+footer .col-md-2, footer .col-md-3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-self: start; /* Mantém todas as colunas no topo */
+}
+
+footer .col-md-2 img {
+    max-height: 1000px; /* Ajuste conforme necessário */
+    object-fit: contain; /* Mantém proporção da imagem */
+    align-self: start; /* Garante que a logo fique alinhada ao topo */
+}
+
+footer a:hover {
+    color: #00adb5; /* Cor destacada ao passar o mouse */
+}
+
+footer hr {
+    border-color: #4e4e4e;
+    opacity: 0.6;
+}
+
+footer .col-md-3 p {
+    max-width: 275px; /* Ajuste esse valor conforme necessário */
+    text-align: justify; /* Opcional: deixa o texto mais alinhado e elegante */
+}
+
+
+footer p {
+    margin: 0;
+}
+
+.footer-logo {
+    max-width: 250px; /* Ajuste conforme necessário */
+    width: 100%; /* Faz com que a imagem se ajuste à coluna */
+    height: auto; /* Mantém a proporção da imagem */
+    margin: 0 auto;
+    display: block;
+}
+
+/* Espaçamento no Rodapé */
+footer .container {
+    padding: 2rem 0; /* Padding geral para o rodapé */
+}
+
+footer .footer-title {
+    margin-bottom: 1rem; /* Espaçamento entre o título e os links */
+}
+
+footer ul {
+    padding-left: 0; /* Remove indentação padrão */
+}
+
+footer ul li {
+    margin-bottom: 0.5rem; /* Espaçamento entre os links */
+}
+
+footer .social-icon {
+    margin-right: 0.5rem; /* Espaçamento entre os ícones sociais */
+}
+
+footer hr {
+    margin: 2rem 0; /* Espaçamento vertical para a linha */
+}
+
+footer .row {
+    align-items: start; /* Alinha todas as colunas pelo topo */
+}
+
+footer p, footer a {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.btn-floating {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra nos botões sociais */
+    transition: all 0.3s;
+}
+
+.btn-floating:hover {
+    transform: translateY(-2px); /* Efeito de elevação ao passar o mouse */
+}
+
+hr {
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.card {
+    width: 180px; /* Ajuste a largura do cartão */
+    height: 350px; /* Ajuste a altura do cartão */
+    margin: auto;
+    border: 1px solid #ddd; /* Borda leve ao redor do cartão */
+    border-radius: 8px; /* Bordas arredondadas */
+    overflow: hidden; /* Garante que o conteúdo não exceda os limites do cartão */
+}
+
+.card-img-top {
+    width: 100%; /* Faz a imagem ocupar a largura total do cartão */
+    height: 280px; /* Ajuste a altura da imagem conforme necessário */
+    object-fit: cover; /* Faz com que a imagem cubra a área sem distorcer */
+}
+
+.card-body {
+    padding: 15px; /* Ajuste o espaçamento interno do corpo do cartão */
+    text-align: left; /* Alinha o texto à esquerda */
+}
+
+.product-info .card-text {
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.product-info .card-price {
+    font-size: 18px;
+    color: #ff4b2b;
+    font-weight: bold;
+}
+
+.product-card {
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    width: 100%; /* Garante que o card ocupe a largura total da coluna */
+    max-width: 220px; /* Define uma largura máxima */
+    margin: 10px auto; /* Centraliza os cards */
+    border-radius: 8px; /* Bordas arredondadas */
+    overflow: hidden; /* Evita que o conteúdo transborde */
+}
+
+.product-image {
+    width: 400px;
+    height: auto; /* Defina a altura desejada */
+    object-fit: cover; 
+    display: block;
+    margin: 10px 0 10px 10px;
+}
+
+
+.promo-label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 5px;
+    z-index: 1;
+}
+
+.card-text {
+    margin-bottom: 5px;
+}
+
+.card-price {
+    color: #ff4b2b;
+    font-size: 1.5em;
+    margin: 0;
+}
+
+/* Custom CSS for Markets Page */
+
+.market-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    overflow: hidden;
+    background-color: #fff;
+    margin-bottom: 1rem;
+    height: auto;
+}
+
+.market-image {
+    flex: 1;
+    overflow: hidden;
+    height: 200px; /* Altura padrão para imagens */
+}
+
+.market-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem preencha o contêiner sem distorcer */
+}
+
+.market-details {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    width: 100%; /* Ocupa todo o espaço no layout de coluna única */
+    box-sizing: border-box;
+}
+
+/* Responsividade para tablets e desktops */
+@media (min-width: 768px) {
+    .market-card {
+        flex-direction: row;
+        height: auto; /* Deixe o cartão ajustar a altura conforme o conteúdo */
+    }
+    
+    .market-image {
+        flex: 1 1 40%; /* Imagem ocupa 40% da largura em telas médias e maiores */
+        height: auto; /* Permite que a altura da imagem seja proporcional */
+    }
+    
+    .market-details {
+        width: 60%; /* Ajuste a largura do conteúdo de detalhes para o restante do espaço */
+    }
+}
+
+/* Responsividade para telas entre 769px e 991px */
+@media (min-width: 769px) and (max-width: 991px) {
+    .market-card {
+        flex-direction: row; /* Layout lado a lado para essa faixa de largura */
+        height: auto;
+    }
+    
+    .market-image {
+        width: 100%; 
+        height: auto; /* Altura ajustável para se adaptar ao conteúdo */
+    }
+    
+    .market-details {
+        width: 100%; 
+        padding: 1.5rem; /* Manter padding confortável */
+        box-sizing: border-box; /* Para garantir que o padding seja incluído na largura total */
+    }
+}
+
+
+/* Responsividade para telas grandes */
+@media (min-width: 1200px) {
+    .market-card {
+        height: 100%; /* Cartão ocupa 100% da altura do contêiner */
+    }
+    
+    .market-details {
+        padding: 2rem; /* Mais espaço de padding em telas maiores */
+    }
+}
+
+
+/* Ajuste de layout para dispositivos maiores */
+@media (min-width: 992px) {
+    .market-card {
+        flex-direction: row;
+    }
+
+    .market-image {
+        flex: 0 0 60%; /* Ajuste a largura da imagem em dispositivos maiores */
+    }
+
+    .market-details {
+        flex: 0 0 40%; /* Ajusta a largura do quadradinho de detalhes em dispositivos maiores */
+    }
+}
+.placeholder-light::placeholder {
+    color: #343a40; /* Cor do placeholder para o tema claro */
+}
+.placeholder-dark::placeholder {
+    color: #ffffff; /* Cor do placeholder para o tema escuro */
+}
+
+
+
