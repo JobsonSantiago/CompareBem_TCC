@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Dashboard - Compare Bem</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Google Fonts -->
@@ -12,6 +12,8 @@
     <!-- Inclusão do JavaScript -->
     <script src="{{ asset('js/scriptsprodutos.js') }}"></script>
     <script src="{{ asset('js/scripttema.js') }}"></script>
+    <!-- Img barra de pesquisa -->
+    <link rel="icon" href="images/logo_cb.png" type="image/png">
     <style>
         body {
             font-family: 'Montserrat', sans-serif;

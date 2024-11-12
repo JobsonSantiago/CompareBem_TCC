@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Site Exemplo</title>
+    <title>Compare Bem</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -19,6 +19,9 @@
     <script src="{{ asset('js/scripttema.js') }}"></script>
     <!-- Importação dos icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- Img barra de pesquisa -->
+    <link rel="icon" href="images/logo_cb.png" type="image/png">
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 
@@ -94,42 +97,42 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown" onmouseenter="keepDropdown()" onmouseleave="hideDropdown()">
                                 <li><a class="dropdown-item" href="{{ route('cadastro_produto') }}">Cadastrar Preço do Produto</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                 @if(session('success'))
-                <div class="alert alert-success alert-dismissible fade show position-fixed top-0 end-0 m-3" role="alert" id="success-alert">
-                    {{ session('success') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-
-                <script>
-                    setTimeout(function() {
-                        var alert = document.getElementById('success-alert');
-                        if (alert) {
-                            alert.classList.remove('show');
-                            alert.classList.add('fade');
-                        }
-                    }, 5000); // 5000ms = 5 segundos
-                </script>
-                @endif
-                @if(session('error'))
-                <div class="alert alert-danger alert-dismissible fade show position-fixed top-0 end-0 m-3" role="alert" id="error-alert">
-                    {{ session('error') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                <script>
-                    setTimeout(function() {
-                        var alert = document.getElementById('error-alert');
-                        if (alert) {
-                            alert.classList.remove('show');
-                            alert.classList.add('fade');
-                        }
-                    }, 5000); // 5000ms = 5 segundos
-                </script>
-                @endif
                             </ul>
                         </li>
+                    </ul>
+                    @if(session('success'))
+                    <div class="alert alert-success alert-dismissible fade show position-fixed top-0 end-0 m-3" role="alert" id="success-alert">
+                        {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
+                    <script>
+                        setTimeout(function() {
+                            var alert = document.getElementById('success-alert');
+                            if (alert) {
+                                alert.classList.remove('show');
+                                alert.classList.add('fade');
+                            }
+                        }, 5000); // 5000ms = 5 segundos
+                    </script>
+                    @endif
+                    @if(session('error'))
+                    <div class="alert alert-danger alert-dismissible fade show position-fixed top-0 end-0 m-3" role="alert" id="error-alert">
+                        {{ session('error') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <script>
+                        setTimeout(function() {
+                            var alert = document.getElementById('error-alert');
+                            if (alert) {
+                                alert.classList.remove('show');
+                                alert.classList.add('fade');
+                            }
+                        }, 5000); // 5000ms = 5 segundos
+                    </script>
+                    @endif
+                    </ul>
+                    </li>
                     </ul>
                 </div>
 

@@ -12,6 +12,8 @@
     <!-- Inclusão do JavaScript -->
     <script src="{{ asset('js/scriptsprodutos.js') }}"></script>
     <script src="{{ asset('js/scripttema.js') }}"></script>
+    <!-- Img barra de pesquisa -->
+    <link rel="icon" href="images/logo_cb.png" type="image/png">
     <style>
         body {
             font-family: 'Montserrat', sans-serif;

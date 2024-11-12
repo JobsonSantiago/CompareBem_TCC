@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cadastro</title>
+    <title>Cadastro - Compare Bem</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Inclusão do JavaScript -->
     <script src="{{ asset('js/scripttema.js') }}"></script>
+    <!-- Img barra de pesquisa -->
+    <link rel="icon" href="images/logo_cb.png" type="image/png">
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 
