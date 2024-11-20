@@ -191,3 +191,18 @@ function atualizarProdutosContainer(produtos) {
     // Reaplica os eventos das estrelas após a atualização dos produtos
     aplicarEventosEstrelas();
 }
+
+// Função para alternar o estado do coração (preenchido ou vazio)
+function toggleHeart(button) {
+    var heartEmpty = button.querySelector('.heart-empty');
+    var heartFilled = button.querySelector('.heart-filled');
+
+    // Alterna a exibição dos ícones
+    if (heartFilled.style.display === 'inline') {
+        heartFilled.style.display = 'none';  // Esconde o coração preenchido
+        heartEmpty.style.display = 'inline'; // Exibe o coração vazio
+    } else {
+        heartFilled.style.display = 'inline'; // Exibe o coração preenchido
+        heartEmpty.style.display = 'none';    // Esconde o coração vazio
+    }
+}

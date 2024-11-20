@@ -25,7 +25,6 @@ class AvaliacaoProdutoController extends Controller
             return redirect()->back()->with('error', 'Você já avaliou este produto neste mercado.');
         }
 
-
         // Criando a avaliação no banco
         AvaliacaoProduto::create([
             'id_produto' => $request->id_produto,
@@ -40,23 +39,28 @@ class AvaliacaoProdutoController extends Controller
                 ->where('id_mercado', $request->id_mercado)
                 ->where('avaliacao_preco', 'Incorreto')
                 ->count();
-
-            // Se houver 3 avaliações "Incorretas", exclua os preços e as avaliações
-            if ($contagemIncorretas >= 3) {
+        
+            // Conte o número total de avaliações para esse produto e mercado
+            $totalAvaliacoes = AvaliacaoProduto::where('id_produto', $request->id_produto)
+                ->where('id_mercado', $request->id_mercado)
+                ->count();
+        
+            // Se houver 3 ou mais avaliações "Incorretas" e o total for 5 ou menos, ou se o total for maior que 5 e 50,1% ou mais forem "Incorretas"
+            if (($totalAvaliacoes <= 5 && $contagemIncorretas >= 3) || ($totalAvaliacoes > 5 && ($contagemIncorretas / $totalAvaliacoes) >= 0.501)) {
                 // Exclua os preços da tabela produtos_caracteristicas
                 ProdutosCaracteristicas::where('id_produto', $request->id_produto)
                     ->where('id_mercado', $request->id_mercado)
                     ->delete();
-
+        
                 // Exclua as avaliações da tabela avaliacao_preco
                 AvaliacaoProduto::where('id_produto', $request->id_produto)
                     ->where('id_mercado', $request->id_mercado)
                     ->delete();
-
+        
                 return redirect()->back()->with('error', 'Este produto atingiu o limite de avaliações incorretas e será deletado.');
             }
         }
-
+        
 
         return redirect()->back()->with('success', 'Avaliação registrada com sucesso!');
     }

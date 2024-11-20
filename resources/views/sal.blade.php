@@ -302,7 +302,7 @@
                                         <option value="Incorreto">Incorreto</option>
                                     </select>
                                     <button class="btn btn-outline-secondary" type="submit">
-                                        <i class="bi bi-search">Registrar</i> <br>
+                                        <i class="">Registrar</i> <br>
                                     </button>
                                     @php
                                     // Contando as avaliações
@@ -374,7 +374,7 @@
                                         <option value="Incorreto">Incorreto</option>
                                     </select>
                                     <button class="btn btn-outline-secondary" type="submit">
-                                        <i class="bi bi-search">Registrar</i> <br>
+                                        <i class="">Registrar</i> <br>
                                     </button>
                                     @php
                                     // Contando as avaliações
@@ -446,7 +446,7 @@
                                         <option value="Incorreto">Incorreto</option>
                                     </select>
                                     <button class="btn btn-outline-secondary" type="submit">
-                                        <i class="bi bi-search">Registrar</i> <br>
+                                        <i class="">Registrar</i> <br>
                                     </button>
                                     @php
                                     // Contando as avaliações
@@ -518,7 +518,7 @@
                                         <option value="Incorreto">Incorreto</option>
                                     </select>
                                     <button class="btn btn-outline-secondary" type="submit">
-                                        <i class="bi bi-search">Registrar</i> <br>
+                                        <i class="">Registrar</i> <br>
                                     </button>
                                     @php
                                     // Contando as avaliações
@@ -591,7 +591,7 @@
                                         <option value="Incorreto">Incorreto</option>
                                     </select>
                                     <button class="btn btn-outline-secondary" type="submit">
-                                        <i class="bi bi-search">Registrar</i> <br>
+                                        <i class="">Registrar</i> <br>
                                     </button>
                                     @php
                                     // Contando as avaliações
@@ -664,7 +664,7 @@
                                         <option value="Incorreto">Incorreto</option>
                                     </select>
                                     <button class="btn btn-outline-secondary" type="submit">
-                                        <i class="bi bi-search">Registrar</i> <br>
+                                        <i class="">Registrar</i> <br>
                                     </button>
                                     @php
                                     // Contando as avaliações
@@ -737,7 +737,7 @@
                                         <option value="Incorreto">Incorreto</option>
                                     </select>
                                     <button class="btn btn-outline-secondary" type="submit">
-                                        <i class="bi bi-search">Registrar</i> <br>
+                                        <i class="">Registrar</i> <br>
                                     </button>
                                     @php
                                     // Contando as avaliações
@@ -810,7 +810,7 @@
                                         <option value="Incorreto">Incorreto</option>
                                     </select>
                                     <button class="btn btn-outline-secondary" type="submit">
-                                        <i class="bi bi-search">Registrar</i> <br>
+                                        <i class="">Registrar</i> <br>
                                     </button>
                                     @php
                                     // Contando as avaliações
