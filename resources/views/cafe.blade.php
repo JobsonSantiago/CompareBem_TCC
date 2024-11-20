@@ -71,52 +71,52 @@
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
-                <!-- Logo -->
-                <div class="navbar-logo">
-                    <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}">
-                        <img src="images/logo_cb.png" alt="Logo" class="logo-image">
-                    </a>
-                </div>
+        <div class="container-fluid">
+            <!-- Logo -->
+            <div class="navbar-logo">
+                <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}">
+                    <img src="images/logo_cb.png" alt="Logo" class="logo-image">
+                </a>
+            </div>
 
-                <!-- Botão do Menu Colapsável -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+            <!-- Botão do Menu Colapsável -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                <!-- Links do Menu (Colapsáveis) -->
-                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Início</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="{{ route('mercados') }}">Mercados</a>
-                        </li>
+            <!-- Links do Menu (Colapsáveis) -->
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ route('mercados') }}">Mercados</a>
+                    </li>
 
-                        <!-- Produtos como link direto em telas menores -->
-                        <li class="nav-item d-lg-none">
-                            <a class="nav-link" href="{{ route('produtos') }}">Produtos</a>
-                        </li>
+                    <!-- Produtos como link direto em telas menores -->
+                    <li class="nav-item d-lg-none">
+                        <a class="nav-link" href="{{ route('produtos') }}">Produtos</a>
+                    </li>
 
-                        <!-- Cadastrar Preço do Produto para telas menores -->
-                        <li class="nav-item d-lg-none">
-                            <a class="nav-link" href="{{ route('cadastro_produto') }}">Cadastrar Preço do Produto</a>
-                        </li>
+                    <!-- Cadastrar Preço do Produto para telas menores -->
+                    <li class="nav-item d-lg-none">
+                        <a class="nav-link" href="{{ route('cadastro_produto') }}">Cadastrar Preço do Produto</a>
+                    </li>
 
-                        <!-- Produtos: Com dropdown para telas grandes -->
-                        <li class="nav-item dropdown d-none d-lg-block" id="produtosDropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-                                role="button" aria-expanded="false" onmouseover="showDropdown()" onmouseleave="hideDropdown()">
-                                Produtos
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown" onmouseenter="keepDropdown()" onmouseleave="hideDropdown()">
-                                <li><a class="dropdown-item" href="{{ route('cadastro_produto') }}">Cadastrar Preço do Produto</a></li>
+                    <!-- Produtos: Com dropdown para telas grandes -->
+                    <li class="nav-item dropdown d-none d-lg-block" id="produtosDropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                            role="button" aria-expanded="false" onmouseover="showDropdown()" onmouseleave="hideDropdown()">
+                            Produtos
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown" onmouseenter="keepDropdown()" onmouseleave="hideDropdown()">
+                            <li><a class="dropdown-item" href="{{ route('cadastro_produto') }}">Cadastrar Preço do Produto</a></li>
                         </ul>
                     </li>
                 </ul>
-                 @if(session('success'))
+                @if(session('success'))
                 <div class="alert alert-success alert-dismissible fade show position-fixed top-0 end-0 m-3" role="alert" id="success-alert">
                     {{ session('success') }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -147,51 +147,51 @@
                     }, 5000); // 5000ms = 5 segundos
                 </script>
                 @endif
-                        </ul>
-                    </li>
+                </ul>
+                </li>
                 </ul>
             </div>
-             
+
             <script>
-                    // Função para mostrar o dropdown
-                    function showDropdown() {
-                        const dropdownMenu = document.querySelector('.dropdown-menu');
-                        dropdownMenu.classList.add('show');
-                    }
+                // Função para mostrar o dropdown
+                function showDropdown() {
+                    const dropdownMenu = document.querySelector('.dropdown-menu');
+                    dropdownMenu.classList.add('show');
+                }
 
-                    // Função para esconder o dropdown
-                    function hideDropdown() {
-                        const dropdownMenu = document.querySelector('.dropdown-menu');
-                        dropdownMenu.classList.remove('show');
-                    }
+                // Função para esconder o dropdown
+                function hideDropdown() {
+                    const dropdownMenu = document.querySelector('.dropdown-menu');
+                    dropdownMenu.classList.remove('show');
+                }
 
-                    // Função para manter o dropdown visível enquanto o mouse está sobre ele
-                    function keepDropdown() {
-                        const dropdownMenu = document.querySelector('.dropdown-menu');
-                        dropdownMenu.classList.add('show');
-                    }
+                // Função para manter o dropdown visível enquanto o mouse está sobre ele
+                function keepDropdown() {
+                    const dropdownMenu = document.querySelector('.dropdown-menu');
+                    dropdownMenu.classList.add('show');
+                }
 
-                    // Lógica para redirecionar ao clicar em "Produtos" em telas grandes
-                    document.addEventListener("DOMContentLoaded", function() {
-                        const produtosLink = document.getElementById("navbarDropdown");
+                // Lógica para redirecionar ao clicar em "Produtos" em telas grandes
+                document.addEventListener("DOMContentLoaded", function() {
+                    const produtosLink = document.getElementById("navbarDropdown");
 
-                        produtosLink.addEventListener("click", function(event) {
-                            if (window.innerWidth > 992) {
-                                // Redireciona para a página de produtos ao clicar
-                                window.location.href = "{{ route('produtos') }}";
-                            }
-                        });
+                    produtosLink.addEventListener("click", function(event) {
+                        if (window.innerWidth > 992) {
+                            // Redireciona para a página de produtos ao clicar
+                            window.location.href = "{{ route('produtos') }}";
+                        }
                     });
-                </script>
+                });
+            </script>
 
             <!-- Ícone da Conta -->
-                <div class="navbar-icon">
-                    <a href="{{ route('register') }}" class="navbar-brand d-flex align-items-center">
-                        <img src="{{ asset('images/conta_tcc.png') }}" alt="Conta" class="conta-image">
-                    </a>
-                </div>
+            <div class="navbar-icon">
+                <a href="{{ route('register') }}" class="navbar-brand d-flex align-items-center">
+                    <img src="{{ asset('images/conta_tcc.png') }}" alt="Conta" class="conta-image">
+                </a>
             </div>
-        </nav>
+        </div>
+    </nav>
 
     <!-- Seção de Produtos em Destaque -->
     <div class="container mt-5">
@@ -234,13 +234,24 @@
                 <div class="product-card">
                     <img src="images/pr_cafe.png" alt="Imagem do Produto 1">
                     <div class="product-info">
-                        <form action="{{ route('favoritar') }}" method="POST">
-                            @csrf
+                        @php
+                        // Verifique se o produto já foi favoritado
+                        $favoritoExistente = \App\Models\Favorito::where('user_id', auth()->id())
+                        ->where('id_mercado', 1) // ID do mercado
+                        ->where('id_produto', 9) // ID do produto
+                        ->exists();
+                        @endphp
+                        <form action="{{ $favoritoExistente ? route('favoritar_remover') : route('favoritar') }}" method="POST"> @csrf
                             <input type="hidden" name="id_produto" value="9">
                             <input type="hidden" name="id_mercado" value="1">
-                            <button class="btn btn-danger favorite-button">
+                            <button type="submit" class="btn btn-danger favorite-button">
+                                @if($favoritoExistente)
+                                <!-- Exibe o coração preenchido se for favorito -->
+                                <i class="fas fa-heart heart-filled"></i>
+                                @else
+                                <!-- Exibe o coração vazio se não for favorito -->
                                 <i class="far fa-heart heart-empty"></i>
-                                <i class="fas fa-heart heart-filled" style="display:none;"></i>
+                                @endif
                             </button>
                         </form>
                         <br>
@@ -306,13 +317,24 @@
                 <div class="product-card">
                     <img src="images/pr_cafe.png" alt="Imagem do Produto 2">
                     <div class="product-info">
-                        <form action="{{ route('favoritar') }}" method="POST">
-                            @csrf
+                        @php
+                        // Verifique se o produto já foi favoritado
+                        $favoritoExistente = \App\Models\Favorito::where('user_id', auth()->id())
+                        ->where('id_mercado', 2) // ID do mercado
+                        ->where('id_produto', 9) // ID do produto
+                        ->exists();
+                        @endphp
+                        <form action="{{ $favoritoExistente ? route('favoritar_remover') : route('favoritar') }}" method="POST"> @csrf
                             <input type="hidden" name="id_produto" value="9">
                             <input type="hidden" name="id_mercado" value="2">
-                            <button class="btn btn-danger favorite-button">
+                            <button type="submit" class="btn btn-danger favorite-button">
+                                @if($favoritoExistente)
+                                <!-- Exibe o coração preenchido se for favorito -->
+                                <i class="fas fa-heart heart-filled"></i>
+                                @else
+                                <!-- Exibe o coração vazio se não for favorito -->
                                 <i class="far fa-heart heart-empty"></i>
-                                <i class="fas fa-heart heart-filled" style="display:none;"></i>
+                                @endif
                             </button>
                         </form>
                         <br>
@@ -378,13 +400,24 @@
                 <div class="product-card">
                     <img src="images/pr_cafe.png" alt="Imagem do Produto 3">
                     <div class="product-info">
-                        <form action="{{ route('favoritar') }}" method="POST">
-                            @csrf
+                        @php
+                        // Verifique se o produto já foi favoritado
+                        $favoritoExistente = \App\Models\Favorito::where('user_id', auth()->id())
+                        ->where('id_mercado', 3) // ID do mercado
+                        ->where('id_produto', 9) // ID do produto
+                        ->exists();
+                        @endphp
+                        <form action="{{ $favoritoExistente ? route('favoritar_remover') : route('favoritar') }}" method="POST"> @csrf
                             <input type="hidden" name="id_produto" value="9">
                             <input type="hidden" name="id_mercado" value="3">
-                            <button class="btn btn-danger favorite-button">
+                            <button type="submit" class="btn btn-danger favorite-button">
+                                @if($favoritoExistente)
+                                <!-- Exibe o coração preenchido se for favorito -->
+                                <i class="fas fa-heart heart-filled"></i>
+                                @else
+                                <!-- Exibe o coração vazio se não for favorito -->
                                 <i class="far fa-heart heart-empty"></i>
-                                <i class="fas fa-heart heart-filled" style="display:none;"></i>
+                                @endif
                             </button>
                         </form>
                         <br>
@@ -450,13 +483,24 @@
                 <div class="product-card">
                     <img src="images/pr_cafe.png" alt="Imagem do Produto 4">
                     <div class="product-info">
-                        <form action="{{ route('favoritar') }}" method="POST">
-                            @csrf
+                        @php
+                        // Verifique se o produto já foi favoritado
+                        $favoritoExistente = \App\Models\Favorito::where('user_id', auth()->id())
+                        ->where('id_mercado', 4) // ID do mercado
+                        ->where('id_produto', 9) // ID do produto
+                        ->exists();
+                        @endphp
+                        <form action="{{ $favoritoExistente ? route('favoritar_remover') : route('favoritar') }}" method="POST"> @csrf
                             <input type="hidden" name="id_produto" value="9">
                             <input type="hidden" name="id_mercado" value="4">
-                            <button class="btn btn-danger favorite-button">
+                            <button type="submit" class="btn btn-danger favorite-button">
+                                @if($favoritoExistente)
+                                <!-- Exibe o coração preenchido se for favorito -->
+                                <i class="fas fa-heart heart-filled"></i>
+                                @else
+                                <!-- Exibe o coração vazio se não for favorito -->
                                 <i class="far fa-heart heart-empty"></i>
-                                <i class="fas fa-heart heart-filled" style="display:none;"></i>
+                                @endif
                             </button>
                         </form>
                         <br>
@@ -522,13 +566,24 @@
                 <div class="product-card">
                     <img src="images/pr_cafe2.png" alt="Imagem do Produto 5">
                     <div class="product-info">
-                        <form action="{{ route('favoritar') }}" method="POST">
-                            @csrf
+                        @php
+                        // Verifique se o produto já foi favoritado
+                        $favoritoExistente = \App\Models\Favorito::where('user_id', auth()->id())
+                        ->where('id_mercado', 1) // ID do mercado
+                        ->where('id_produto', 10) // ID do produto
+                        ->exists();
+                        @endphp
+                        <form action="{{ $favoritoExistente ? route('favoritar_remover') : route('favoritar') }}" method="POST"> @csrf
                             <input type="hidden" name="id_produto" value="10">
                             <input type="hidden" name="id_mercado" value="1">
-                            <button class="btn btn-danger favorite-button">
+                            <button type="submit" class="btn btn-danger favorite-button">
+                                @if($favoritoExistente)
+                                <!-- Exibe o coração preenchido se for favorito -->
+                                <i class="fas fa-heart heart-filled"></i>
+                                @else
+                                <!-- Exibe o coração vazio se não for favorito -->
                                 <i class="far fa-heart heart-empty"></i>
-                                <i class="fas fa-heart heart-filled" style="display:none;"></i>
+                                @endif
                             </button>
                         </form>
                         <br>
@@ -594,13 +649,24 @@
                 <div class="product-card">
                     <img src="images/pr_cafe2.png" alt="Imagem do Produto 6">
                     <div class="product-info">
-                        <form action="{{ route('favoritar') }}" method="POST">
-                            @csrf
+                        @php
+                        // Verifique se o produto já foi favoritado
+                        $favoritoExistente = \App\Models\Favorito::where('user_id', auth()->id())
+                        ->where('id_mercado', 2) // ID do mercado
+                        ->where('id_produto', 10) // ID do produto
+                        ->exists();
+                        @endphp
+                        <form action="{{ $favoritoExistente ? route('favoritar_remover') : route('favoritar') }}" method="POST"> @csrf
                             <input type="hidden" name="id_produto" value="10">
                             <input type="hidden" name="id_mercado" value="2">
-                            <button class="btn btn-danger favorite-button">
+                            <button type="submit" class="btn btn-danger favorite-button">
+                                @if($favoritoExistente)
+                                <!-- Exibe o coração preenchido se for favorito -->
+                                <i class="fas fa-heart heart-filled"></i>
+                                @else
+                                <!-- Exibe o coração vazio se não for favorito -->
                                 <i class="far fa-heart heart-empty"></i>
-                                <i class="fas fa-heart heart-filled" style="display:none;"></i>
+                                @endif
                             </button>
                         </form>
                         <br>
@@ -666,13 +732,24 @@
                 <div class="product-card">
                     <img src="images/pr_cafe2.png" alt="Imagem do Produto 7">
                     <div class="product-info">
-                        <form action="{{ route('favoritar') }}" method="POST">
-                            @csrf
+                        @php
+                        // Verifique se o produto já foi favoritado
+                        $favoritoExistente = \App\Models\Favorito::where('user_id', auth()->id())
+                        ->where('id_mercado', 3) // ID do mercado
+                        ->where('id_produto', 10) // ID do produto
+                        ->exists();
+                        @endphp
+                        <form action="{{ $favoritoExistente ? route('favoritar_remover') : route('favoritar') }}" method="POST"> @csrf
                             <input type="hidden" name="id_produto" value="10">
                             <input type="hidden" name="id_mercado" value="3">
-                            <button class="btn btn-danger favorite-button">
+                            <button type="submit" class="btn btn-danger favorite-button">
+                                @if($favoritoExistente)
+                                <!-- Exibe o coração preenchido se for favorito -->
+                                <i class="fas fa-heart heart-filled"></i>
+                                @else
+                                <!-- Exibe o coração vazio se não for favorito -->
                                 <i class="far fa-heart heart-empty"></i>
-                                <i class="fas fa-heart heart-filled" style="display:none;"></i>
+                                @endif
                             </button>
                         </form>
                         <br>
@@ -738,13 +815,24 @@
                 <div class="product-card">
                     <img src="images/pr_cafe2.png" alt="Imagem do Produto 8">
                     <div class="product-info">
-                        <form action="{{ route('favoritar') }}" method="POST">
-                            @csrf
+                        @php
+                        // Verifique se o produto já foi favoritado
+                        $favoritoExistente = \App\Models\Favorito::where('user_id', auth()->id())
+                        ->where('id_mercado', 4) // ID do mercado
+                        ->where('id_produto', 10) // ID do produto
+                        ->exists();
+                        @endphp
+                        <form action="{{ $favoritoExistente ? route('favoritar_remover') : route('favoritar') }}" method="POST"> @csrf
                             <input type="hidden" name="id_produto" value="10">
                             <input type="hidden" name="id_mercado" value="4">
-                            <button class="btn btn-danger favorite-button">
+                            <button type="submit" class="btn btn-danger favorite-button">
+                                @if($favoritoExistente)
+                                <!-- Exibe o coração preenchido se for favorito -->
+                                <i class="fas fa-heart heart-filled"></i>
+                                @else
+                                <!-- Exibe o coração vazio se não for favorito -->
                                 <i class="far fa-heart heart-empty"></i>
-                                <i class="fas fa-heart heart-filled" style="display:none;"></i>
+                                @endif
                             </button>
                         </form>
                         <br>

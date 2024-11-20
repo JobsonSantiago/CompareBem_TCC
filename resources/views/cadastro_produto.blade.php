@@ -289,7 +289,7 @@
                         <label for="produto" class="form-label">Produto</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fas fa-box"></i></span>
-                            <input type="text" class="form-control" id="selected-product-name" name="product_name" placeholder="Selecione um produto" readonly>
+                            <input type="text" class="form-control" id="selected-product-name" name="product_name" placeholder="Selecione um produto" readonly data-bs-toggle="modal" data-bs-target="#myModal">
                             <input type="hidden" id="selected-product-id" name="product_id"> <!-- Campo oculto para o ID do produto -->
                             <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#myModal">
                                 Selecionar Produto
@@ -334,7 +334,7 @@
                         <label for="mercado" class="form-label">Mercado</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fas fa-store"></i></span>
-                            <input type="text" class="form-control" id="selected-market-name" name="market_name" placeholder="Selecione um mercado" readonly>
+                            <input type="text" class="form-control" id="selected-market-name" name="market_name" placeholder="Selecione um mercado" readonly data-bs-toggle="modal" data-bs-target="#myModal1">
                             <input type="hidden" id="selected-market-id" name="market_id"> <!-- Campo oculto para o ID do mercado -->
                             <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#myModal1">
                                 Selecionar Mercado

@@ -66,41 +66,50 @@
         }
 
         @media (min-width: 769px) and (max-width: 991px) {
-    .product-card {
-        max-width: 300px; /* Reduz a largura máxima para essa faixa */
-        padding: 10px; /* Ajusta o padding para ocupar menos espaço */
-        margin-bottom: 40px; /* Reduz o espaçamento entre os cards */
-    }
+            .product-card {
+                max-width: 300px;
+                /* Reduz a largura máxima para essa faixa */
+                padding: 10px;
+                /* Ajusta o padding para ocupar menos espaço */
+                margin-bottom: 40px;
+                /* Reduz o espaçamento entre os cards */
+            }
 
-    .product-card img {
-        width: 60%; /* Aumenta um pouco a largura da imagem para essa faixa */
-        height: 200px; /* Reduz a altura para evitar que o card fique muito alto */
-    }
+            .product-card img {
+                width: 60%;
+                /* Aumenta um pouco a largura da imagem para essa faixa */
+                height: 200px;
+                /* Reduz a altura para evitar que o card fique muito alto */
+            }
 
-    .product-price {
-        font-size: 22px; /* Ajusta o tamanho da fonte do preço */
-        margin: 8px 0; /* Reduz o espaçamento acima e abaixo */
-    }
+            .product-price {
+                font-size: 22px;
+                /* Ajusta o tamanho da fonte do preço */
+                margin: 8px 0;
+                /* Reduz o espaçamento acima e abaixo */
+            }
 
-    .product-name,
-    .market-name {
-        font-size: 14px; /* Reduz o tamanho da fonte para essa faixa de largura */
-    }
+            .product-name,
+            .market-name {
+                font-size: 14px;
+                /* Reduz o tamanho da fonte para essa faixa de largura */
+            }
 
-    .product-review-label {
-        margin-left: 4px; /* Ajuste menor para o espaçamento ao lado */
-    }
-}
+            .product-review-label {
+                margin-left: 4px;
+                /* Ajuste menor para o espaçamento ao lado */
+            }
+        }
     </style>
 </head>
 
 <body>
 
-<!-- Contêiner principal para manter o conteúdo e o rodapé -->
-<div id="content">
+    <!-- Contêiner principal para manter o conteúdo e o rodapé -->
+    <div id="content">
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
                 <!-- Logo -->
                 <div class="navbar-logo">
@@ -143,46 +152,46 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown" onmouseenter="keepDropdown()" onmouseleave="hideDropdown()">
                                 <li><a class="dropdown-item" href="{{ route('cadastro_produto') }}">Cadastrar Preço do Produto</a></li>
-                        </ul>
+                            </ul>
+                        </li>
+                    </ul>
+                    @if(session('success'))
+                    <div class="alert alert-success alert-dismissible fade show position-fixed top-0 end-0 m-3" role="alert" id="success-alert">
+                        {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
+                    <script>
+                        setTimeout(function() {
+                            var alert = document.getElementById('success-alert');
+                            if (alert) {
+                                alert.classList.remove('show');
+                                alert.classList.add('fade');
+                            }
+                        }, 5000); // 5000ms = 5 segundos
+                    </script>
+                    @endif
+                    @if(session('error'))
+                    <div class="alert alert-danger alert-dismissible fade show position-fixed top-0 end-0 m-3" role="alert" id="error-alert">
+                        {{ session('error') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <script>
+                        setTimeout(function() {
+                            var alert = document.getElementById('error-alert');
+                            if (alert) {
+                                alert.classList.remove('show');
+                                alert.classList.add('fade');
+                            }
+                        }, 5000); // 5000ms = 5 segundos
+                    </script>
+                    @endif
+                    </ul>
                     </li>
-                </ul>
-                 @if(session('success'))
-                <div class="alert alert-success alert-dismissible fade show position-fixed top-0 end-0 m-3" role="alert" id="success-alert">
-                    {{ session('success') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </ul>
                 </div>
 
                 <script>
-                    setTimeout(function() {
-                        var alert = document.getElementById('success-alert');
-                        if (alert) {
-                            alert.classList.remove('show');
-                            alert.classList.add('fade');
-                        }
-                    }, 5000); // 5000ms = 5 segundos
-                </script>
-                @endif
-                @if(session('error'))
-                <div class="alert alert-danger alert-dismissible fade show position-fixed top-0 end-0 m-3" role="alert" id="error-alert">
-                    {{ session('error') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                <script>
-                    setTimeout(function() {
-                        var alert = document.getElementById('error-alert');
-                        if (alert) {
-                            alert.classList.remove('show');
-                            alert.classList.add('fade');
-                        }
-                    }, 5000); // 5000ms = 5 segundos
-                </script>
-                @endif
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-             
-            <script>
                     // Função para mostrar o dropdown
                     function showDropdown() {
                         const dropdownMenu = document.querySelector('.dropdown-menu');
@@ -214,7 +223,7 @@
                     });
                 </script>
 
-            <!-- Ícone da Conta -->
+                <!-- Ícone da Conta -->
                 <div class="navbar-icon">
                     <a href="{{ route('register') }}" class="navbar-brand d-flex align-items-center">
                         <img src="{{ asset('images/conta_tcc.png') }}" alt="Conta" class="conta-image">
@@ -223,613 +232,701 @@
             </div>
         </nav>
 
-    <!-- Seção de Produtos em Destaque -->
-    <div class="container mt-5">
-        <h2 class="text-start mb-4">Produtos em destaque</h2>
+        <!-- Seção de Produtos em Destaque -->
+        <div class="container mt-5">
+            <h2 class="text-start mb-4">Produtos em destaque</h2>
 
-        <!-- Barra de Pesquisa -->
-        <div class="container mt-4">
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <label for="name_product" class="form-label">Nome do Produto:</label>
-                    <input type="text" id="produtoDigitado" class="form-control mb-2" placeholder="Pesquisar produto..." onkeyup="pesquisar()">
-                    <br>
-                    <label for="name_market" class="form-label">Nome do Mercado:</label>
-                    <input type="text" id="mercadoDigitado" class="form-control" placeholder="Pesquisar mercado..." onkeyup="pesquisar()">
+            <!-- Barra de Pesquisa -->
+            <div class="container mt-4">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <label for="name_product" class="form-label">Nome do Produto:</label>
+                        <input type="text" id="produtoDigitado" class="form-control mb-2" placeholder="Pesquisar produto..." onkeyup="pesquisar()">
+                        <br>
+                        <label for="name_market" class="form-label">Nome do Mercado:</label>
+                        <input type="text" id="mercadoDigitado" class="form-control" placeholder="Pesquisar mercado..." onkeyup="pesquisar()">
+                    </div>
+                </div>
+                <br>
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="ordenacaoSelect">Ordenar produtos</label>
+                            <select class="form-select" id="ordenacaoSelect" aria-label="Ordenação dos produtos" onchange="ordenarProdutos()">
+                                <option value="0" selected>Selecione um filtro:</option>
+                                <option value="1">Mais barato ao mais caro</option>
+                                <option value="2">Mais caro ao mais barato</option>
+                                <option value="3">Mais recente ao mais antigo</option>
+                                <option value="4">Mais antigo ao mais recente</option>
+                                <option value="5">Número de avaliações</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
             <br>
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="ordenacaoSelect">Ordenar produtos</label>
-                        <select class="form-select" id="ordenacaoSelect" aria-label="Ordenação dos produtos" onchange="ordenarProdutos()">
-                            <option value="0" selected>Selecione um filtro:</option>
-                            <option value="1">Mais barato ao mais caro</option>
-                            <option value="2">Mais caro ao mais barato</option>
-                            <option value="3">Mais recente ao mais antigo</option>
-                            <option value="4">Mais antigo ao mais recente</option>
-                            <option value="5">Número de avaliações</option>
-                        </select>
+            <br>
+
+            <!-- Produtos -->
+            <div class="row" id="produtos-container">
+                <div class="col-lg-4 col-md-4">
+                    <div class="product-card">
+                        <img src="images/pr_arroz.png" alt="Imagem do Produto 1">
+                        <div class="product-info">
+                            @php
+                            // Verifique se o produto já foi favoritado
+                            $favoritoExistente = \App\Models\Favorito::where('user_id', auth()->id())
+                            ->where('id_mercado', 1) // ID do mercado
+                            ->where('id_produto', 1) // ID do produto
+                            ->exists();
+                            @endphp
+                            <form action="{{ $favoritoExistente ? route('favoritar_remover') : route('favoritar') }}" method="POST"> @csrf
+                                <input type="hidden" name="id_produto" value="1">
+                                <input type="hidden" name="id_mercado" value="1">
+                                <button type="submit" class="btn btn-danger favorite-button">
+                                    @if($favoritoExistente)
+                                    <!-- Exibe o coração preenchido se for favorito -->
+                                    <i class="fas fa-heart heart-filled"></i>
+                                    @else
+                                    <!-- Exibe o coração vazio se não for favorito -->
+                                    <i class="far fa-heart heart-empty"></i>
+                                    @endif
+                                </button>
+                            </form>
+                            <br>
+                            <p class="product-name">Arroz Tipo 1 CAMIL Pacote 5kg</p>
+                            @php
+                            // apresentando a media de preços
+                            $precomedio = App\Models\ProdutosCaracteristicas::where('id_mercado', 1) // ID do mercado
+                            ->where('id_produto', 1) // ID do produto
+                            ->avg('preco');
+                            $data = App\Models\ProdutosCaracteristicas::where('id_mercado', 1) // ID do mercado
+                            ->where('id_produto', 1) // ID do produto
+                            ->latest('updated_at')
+                            ->value('updated_at');
+
+                            // Ajustar o timezone
+                            if ($data) {
+
+
+                            $data = \Carbon\Carbon::parse($data)->setTimezone('America/Sao_Paulo');
+                            }
+                            @endphp
+                            <p class="product-price">R$ {{ number_format($precomedio, 2, ',', '.') }}</p>
+                            <p class="market-name">Mercado Noemia</p>
+                            <br>
+                            <p class="product-date">Ultima atualização de preço: {{ $data ? $data->format('d/m/Y H:i:s') : 'Data não disponível' }}</p>
+                            <br>
+                            <br>
+                            <p class="product-review-label">Avalie a veracidade do preço do produto:</p>
+                            <form action="{{ route('avaliacao_produto') }}" class="d-inline" method="POST">
+                                <input type="hidden" name="id_produto" value="1"> <!-- ID do produto -->
+                                <input type="hidden" name="id_mercado" value="1"> <!-- ID do mercado -->
+                                @csrf
+                                <div class="input-group input-group-sm">
+                                    <select name="avaliacao_preco" class="form-select" aria-label="Default select example">
+                                        <option value="Correto">Correto</option>
+                                        <option value="Incorreto">Incorreto</option>
+                                    </select>
+                                    <button class="btn btn-outline-secondary" type="submit">
+                                        <i class="">Registrar</i> <br>
+                                    </button>
+                                    @php
+                                    // Contando as avaliações
+                                    $correto = App\Models\AvaliacaoProduto::where('avaliacao_preco', 'Correto')
+                                    ->where('id_mercado', 1) // ID do mercado
+                                    ->where('id_produto', 1) // ID do produto
+                                    ->count();
+
+                                    $incorreto = App\Models\AvaliacaoProduto::where('avaliacao_preco', 'Incorreto')
+                                    ->where('id_mercado', 1) // ID do mercado
+                                    ->where('id_produto', 1) // ID do produto
+                                    ->count();
+                                    @endphp
+                                    <h6 class="mt-4">Quantidade de Avaliações:</h6>
+                                    <p id="product-quantity" class="text-success">O preço está correto: <strong>{{ $correto }}</strong></p>
+                                    <p class="text-danger">O preço está incorreto: <strong>{{ $incorreto }}</strong></p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="product-card">
+                        <img src="images/pr_arroz.png" alt="Imagem do Produto 2">
+                        <div class="product-info">
+                            @php
+                            // Verifique se o produto já foi favoritado
+                            $favoritoExistente = \App\Models\Favorito::where('user_id', auth()->id())
+                            ->where('id_mercado', 2) // ID do mercado
+                            ->where('id_produto', 1) // ID do produto
+                            ->exists();
+                            @endphp
+                            <form action="{{ $favoritoExistente ? route('favoritar_remover') : route('favoritar') }}" method="POST"> @csrf
+                                <input type="hidden" name="id_produto" value="1">
+                                <input type="hidden" name="id_mercado" value="2">
+                                <button type="submit" class="btn btn-danger favorite-button">
+                                    @if($favoritoExistente)
+                                    <!-- Exibe o coração preenchido se for favorito -->
+                                    <i class="fas fa-heart heart-filled"></i>
+                                    @else
+                                    <!-- Exibe o coração vazio se não for favorito -->
+                                    <i class="far fa-heart heart-empty"></i>
+                                    @endif
+                                </button>
+                            </form>
+                            <br>
+                            <p class="product-name">Arroz Tipo 1 CAMIL Pacote 5kg</p>
+                            @php
+                            // apresentando a media de preços
+                            $precomedio = App\Models\ProdutosCaracteristicas::where('id_mercado', 2) // ID do mercado
+                            ->where('id_produto', 1) // ID do produto
+                            ->avg('preco');
+                            $data = App\Models\ProdutosCaracteristicas::where('id_mercado', 2) // ID do mercado
+                            ->where('id_produto', 1) // ID do produto
+                            ->latest('updated_at')
+                            ->value('updated_at');
+
+                            // Ajustar o timezone
+                            if ($data) {
+
+
+                            $data = \Carbon\Carbon::parse($data)->setTimezone('America/Sao_Paulo');
+                            }
+                            @endphp
+                            <p class="product-price">R$ {{ number_format($precomedio, 2, ',', '.') }}</p>
+                            <p class="market-name">Mercado Tietê</p>
+                            <br>
+                            <p class="product-date">Ultima atualização de preço: {{ $data ? $data->format('d/m/Y H:i:s') : 'Data não disponível' }}</p>
+                            <br>
+                            <br>
+                            <p class="product-review-label">Avalie a veracidade do preço do produto:</p>
+                            <form action="{{ route('avaliacao_produto') }}" class="d-inline" method="POST">
+                                <input type="hidden" name="id_produto" value="1"> <!-- ID do produto -->
+                                <input type="hidden" name="id_mercado" value="2"> <!-- ID do mercado -->
+                                @csrf
+                                <div class="input-group input-group-sm">
+                                    <select name="avaliacao_preco" class="form-select" aria-label="Default select example">
+                                        <option value="Correto">Correto</option>
+                                        <option value="Incorreto">Incorreto</option>
+                                    </select>
+                                    <button class="btn btn-outline-secondary" type="submit">
+                                        <i class="">Registrar</i> <br>
+                                    </button>
+                                    @php
+                                    // Contando as avaliações
+                                    $correto = App\Models\AvaliacaoProduto::where('avaliacao_preco', 'Correto')
+                                    ->where('id_mercado', 2) // ID do mercado
+                                    ->where('id_produto', 1) // ID do produto
+                                    ->count();
+
+                                    $incorreto = App\Models\AvaliacaoProduto::where('avaliacao_preco', 'Incorreto')
+                                    ->where('id_mercado', 2) // ID do mercado
+                                    ->where('id_produto', 1) // ID do produto
+                                    ->count();
+                                    @endphp
+                                    <h6 class="mt-4">Quantidade de Avaliações:</h6>
+                                    <p id="product-quantity" class="text-success">O preço está correto: <strong>{{ $correto }}</strong></p>
+                                    <p class="text-danger">O preço está incorreto: <strong>{{ $incorreto }}</strong></p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="product-card">
+                        <img src="images/pr_arroz.png" alt="Imagem do Produto 3">
+                        <div class="product-info">
+                            @php
+                            // Verifique se o produto já foi favoritado
+                            $favoritoExistente = \App\Models\Favorito::where('user_id', auth()->id())
+                            ->where('id_mercado', 3) // ID do mercado
+                            ->where('id_produto', 1) // ID do produto
+                            ->exists();
+                            @endphp
+                            <form action="{{ $favoritoExistente ? route('favoritar_remover') : route('favoritar') }}" method="POST"> @csrf
+                                <input type="hidden" name="id_produto" value="1">
+                                <input type="hidden" name="id_mercado" value="3">
+                                <button type="submit" class="btn btn-danger favorite-button">
+                                    @if($favoritoExistente)
+                                    <!-- Exibe o coração preenchido se for favorito -->
+                                    <i class="fas fa-heart heart-filled"></i>
+                                    @else
+                                    <!-- Exibe o coração vazio se não for favorito -->
+                                    <i class="far fa-heart heart-empty"></i>
+                                    @endif
+                                </button>
+                            </form>
+                            <br>
+                            <p class="product-name">Arroz Tipo 1 CAMIL Pacote 5kg</p>
+                            @php
+                            // apresentando a media de preços
+                            $precomedio = App\Models\ProdutosCaracteristicas::where('id_mercado', 3) // ID do mercado
+                            ->where('id_produto', 1) // ID do produto
+                            ->avg('preco');
+                            $data = App\Models\ProdutosCaracteristicas::where('id_mercado', 3) // ID do mercado
+                            ->where('id_produto', 1) // ID do produto
+                            ->latest('updated_at')
+                            ->value('updated_at');
+
+                            // Ajustar o timezone
+                            if ($data) {
+
+
+                            $data = \Carbon\Carbon::parse($data)->setTimezone('America/Sao_Paulo');
+                            }
+                            @endphp
+                            <p class="product-price">R$ {{ number_format($precomedio, 2, ',', '.') }}</p>
+                            <p class="market-name">Mercado Economix</p>
+                            <br>
+                            <p class="product-date">Ultima atualização de preço: {{ $data ? $data->format('d/m/Y H:i:s') : 'Data não disponível' }}</p>
+                            <br>
+                            <br>
+                            <p class="product-review-label">Avalie a veracidade do preço do produto:</p>
+                            <form action="{{ route('avaliacao_produto') }}" class="d-inline" method="POST">
+                                <input type="hidden" name="id_produto" value="1"> <!-- ID do produto -->
+                                <input type="hidden" name="id_mercado" value="3"> <!-- ID do mercado -->
+                                @csrf
+                                <div class="input-group input-group-sm">
+                                    <select name="avaliacao_preco" class="form-select" aria-label="Default select example">
+                                        <option value="Correto">Correto</option>
+                                        <option value="Incorreto">Incorreto</option>
+                                    </select>
+                                    <button class="btn btn-outline-secondary" type="submit">
+                                        <i class="">Registrar</i> <br>
+                                    </button>
+                                    @php
+                                    // Contando as avaliações
+                                    $correto = App\Models\AvaliacaoProduto::where('avaliacao_preco', 'Correto')
+                                    ->where('id_mercado', 3) // ID do mercado
+                                    ->where('id_produto', 1) // ID do produto
+                                    ->count();
+
+                                    $incorreto = App\Models\AvaliacaoProduto::where('avaliacao_preco', 'Incorreto')
+                                    ->where('id_mercado', 3) // ID do mercado
+                                    ->where('id_produto', 1) // ID do produto
+                                    ->count();
+                                    @endphp
+                                    <h6 class="mt-4">Quantidade de Avaliações:</h6>
+                                    <p id="product-quantity" class="text-success">O preço está correto: <strong>{{ $correto }}</strong></p>
+                                    <p class="text-danger">O preço está incorreto: <strong>{{ $incorreto }}</strong></p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="product-card">
+                        <img src="images/pr_arroz.png" alt="Imagem do Produto 4">
+                        <div class="product-info">
+                            @php
+                            // Verifique se o produto já foi favoritado
+                            $favoritoExistente = \App\Models\Favorito::where('user_id', auth()->id())
+                            ->where('id_mercado', 4) // ID do mercado
+                            ->where('id_produto', 1) // ID do produto
+                            ->exists();
+                            @endphp
+                            <form action="{{ $favoritoExistente ? route('favoritar_remover') : route('favoritar') }}" method="POST"> @csrf
+                                <input type="hidden" name="id_produto" value="1">
+                                <input type="hidden" name="id_mercado" value="4">
+                                <button type="submit" class="btn btn-danger favorite-button">
+                                    @if($favoritoExistente)
+                                    <!-- Exibe o coração preenchido se for favorito -->
+                                    <i class="fas fa-heart heart-filled"></i>
+                                    @else
+                                    <!-- Exibe o coração vazio se não for favorito -->
+                                    <i class="far fa-heart heart-empty"></i>
+                                    @endif
+                                </button>
+                            </form>
+                            <br>
+                            <p class="product-name">Arroz Tipo 1 CAMIL Pacote 5kg</p>
+                            @php
+                            // apresentando a media de preços
+                            $precomedio = App\Models\ProdutosCaracteristicas::where('id_mercado', 4) // ID do mercado
+                            ->where('id_produto', 1) // ID do produto
+                            ->avg('preco');
+                            $data = App\Models\ProdutosCaracteristicas::where('id_mercado', 4) // ID do mercado
+                            ->where('id_produto', 1) // ID do produto
+                            ->latest('updated_at')
+                            ->value('updated_at');
+
+                            // Ajustar o timezone
+                            if ($data) {
+
+
+                            $data = \Carbon\Carbon::parse($data)->setTimezone('America/Sao_Paulo');
+                            }
+                            @endphp
+                            <p class="product-price">R$ {{ number_format($precomedio, 2, ',', '.') }}</p>
+                            <p class="market-name">Mercado Atacadinho</p>
+                            <br>
+                            <p class="product-date">Ultima atualização de preço: {{ $data ? $data->format('d/m/Y H:i:s') : 'Data não disponível' }}</p>
+                            <br>
+                            <br>
+                            <p class="product-review-label">Avalie a veracidade do preço do produto:</p>
+                            <form action="{{ route('avaliacao_produto') }}" class="d-inline" method="POST">
+                                <input type="hidden" name="id_produto" value="1"> <!-- ID do produto -->
+                                <input type="hidden" name="id_mercado" value="4"> <!-- ID do mercado -->
+                                @csrf
+                                <div class="input-group input-group-sm">
+                                    <select name="avaliacao_preco" class="form-select" aria-label="Default select example">
+                                        <option value="Correto">Correto</option>
+                                        <option value="Incorreto">Incorreto</option>
+                                    </select>
+                                    <button class="btn btn-outline-secondary" type="submit">
+                                        <i class="">Registrar</i> <br>
+                                    </button>
+                                    @php
+                                    // Contando as avaliações
+                                    $correto = App\Models\AvaliacaoProduto::where('avaliacao_preco', 'Correto')
+                                    ->where('id_mercado', 4) // ID do mercado
+                                    ->where('id_produto', 1) // ID do produto
+                                    ->count();
+
+                                    $incorreto = App\Models\AvaliacaoProduto::where('avaliacao_preco', 'Incorreto')
+                                    ->where('id_mercado', 4) // ID do mercado
+                                    ->where('id_produto', 1) // ID do produto
+                                    ->count();
+                                    @endphp
+                                    <h6 class="mt-4">Quantidade de Avaliações:</h6>
+                                    <p id="product-quantity" class="text-success">O preço está correto: <strong>{{ $correto }}</strong></p>
+                                    <p class="text-danger">O preço está incorreto: <strong>{{ $incorreto }}</strong></p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="product-card">
+                        <img src="images/pr_arroz2.png" alt="Imagem do Produto 5">
+                        <div class="product-info">
+                            @php
+                            // Verifique se o produto já foi favoritado
+                            $favoritoExistente = \App\Models\Favorito::where('user_id', auth()->id())
+                            ->where('id_mercado', 1) // ID do mercado
+                            ->where('id_produto', 2) // ID do produto
+                            ->exists();
+                            @endphp
+                            <form action="{{ $favoritoExistente ? route('favoritar_remover') : route('favoritar') }}" method="POST"> @csrf
+                                <input type="hidden" name="id_produto" value="2">
+                                <input type="hidden" name="id_mercado" value="1">
+                                <button type="submit" class="btn btn-danger favorite-button">
+                                    @if($favoritoExistente)
+                                    <!-- Exibe o coração preenchido se for favorito -->
+                                    <i class="fas fa-heart heart-filled"></i>
+                                    @else
+                                    <!-- Exibe o coração vazio se não for favorito -->
+                                    <i class="far fa-heart heart-empty"></i>
+                                    @endif
+                                </button>
+                            </form>
+                            <br>
+                            <p class="product-name">Arroz Tipo 1 TIO JOÃO Pacote 5kg</p>
+                            @php
+                            // apresentando a media de preços
+                            $precomedio = App\Models\ProdutosCaracteristicas::where('id_mercado', 1) // ID do mercado
+                            ->where('id_produto', 2) // ID do produto
+                            ->avg('preco');
+                            $data = App\Models\ProdutosCaracteristicas::where('id_mercado', 1) // ID do mercado
+                            ->where('id_produto', 2) // ID do produto
+                            ->latest('updated_at')
+                            ->value('updated_at');
+
+                            // Ajustar o timezone
+                            if ($data) {
+
+
+                            $data = \Carbon\Carbon::parse($data)->setTimezone('America/Sao_Paulo');
+                            }
+                            @endphp
+                            <p class="product-price">R$ {{ number_format($precomedio, 2, ',', '.') }}</p>
+                            <p class="market-name">Mercado Noemia</p>
+                            <br>
+                            <p class="product-date">Ultima atualização de preço: {{ $data ? $data->format('d/m/Y H:i:s') : 'Data não disponível' }}</p>
+                            <br>
+                            <br>
+                            <p class="product-review-label">Avalie a veracidade do preço do produto:</p>
+                            <form action="{{ route('avaliacao_produto') }}" class="d-inline" method="POST">
+                                <input type="hidden" name="id_produto" value="2"> <!-- ID do produto -->
+                                <input type="hidden" name="id_mercado" value="1"> <!-- ID do mercado -->
+                                @csrf
+                                <div class="input-group input-group-sm">
+                                    <select name="avaliacao_preco" class="form-select" aria-label="Default select example">
+                                        <option value="Correto">Correto</option>
+                                        <option value="Incorreto">Incorreto</option>
+                                    </select>
+                                    <button class="btn btn-outline-secondary" type="submit">
+                                        <i class="">Registrar</i> <br>
+                                    </button>
+                                    @php
+                                    // Contando as avaliações
+                                    $correto = App\Models\AvaliacaoProduto::where('avaliacao_preco', 'Correto')
+                                    ->where('id_mercado', 1) // ID do mercado
+                                    ->where('id_produto', 2) // ID do produto
+                                    ->count();
+
+                                    $incorreto = App\Models\AvaliacaoProduto::where('avaliacao_preco', 'Incorreto')
+                                    ->where('id_mercado', 1) // ID do mercado
+                                    ->where('id_produto', 2) // ID do produto
+                                    ->count();
+                                    @endphp
+                                    <h6 class="mt-4">Quantidade de Avaliações:</h6>
+                                    <p id="product-quantity" class="text-success">O preço está correto: <strong>{{ $correto }}</strong></p>
+                                    <p class="text-danger">O preço está incorreto: <strong>{{ $incorreto }}</strong></p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="product-card">
+                        <img src="images/pr_arroz2.png" alt="Imagem do Produto 6">
+                        <div class="product-info">
+                            @php
+                            // Verifique se o produto já foi favoritado
+                            $favoritoExistente = \App\Models\Favorito::where('user_id', auth()->id())
+                            ->where('id_mercado', 2) // ID do mercado
+                            ->where('id_produto', 2) // ID do produto
+                            ->exists();
+                            @endphp
+                            <form action="{{ $favoritoExistente ? route('favoritar_remover') : route('favoritar') }}" method="POST"> @csrf
+                                <input type="hidden" name="id_produto" value="2">
+                                <input type="hidden" name="id_mercado" value="2">
+                                <button type="submit" class="btn btn-danger favorite-button">
+                                    @if($favoritoExistente)
+                                    <!-- Exibe o coração preenchido se for favorito -->
+                                    <i class="fas fa-heart heart-filled"></i>
+                                    @else
+                                    <!-- Exibe o coração vazio se não for favorito -->
+                                    <i class="far fa-heart heart-empty"></i>
+                                    @endif
+                                </button>
+                            </form>
+                            <br>
+                            <p class="product-name">Arroz Tipo 1 TIO JOÃO Pacote 5kg</p>
+                            @php
+                            // apresentando a media de preços
+                            $precomedio = App\Models\ProdutosCaracteristicas::where('id_mercado', 2) // ID do mercado
+                            ->where('id_produto', 2) // ID do produto
+                            ->avg('preco');
+                            $data = App\Models\ProdutosCaracteristicas::where('id_mercado', 2) // ID do mercado
+                            ->where('id_produto', 2) // ID do produto
+                            ->latest('updated_at')
+                            ->value('updated_at');
+
+                            // Ajustar o timezone
+                            if ($data) {
+
+
+                            $data = \Carbon\Carbon::parse($data)->setTimezone('America/Sao_Paulo');
+                            }
+                            @endphp
+                            <p class="product-price">R$ {{ number_format($precomedio, 2, ',', '.') }}</p>
+                            <p class="market-name">Mercado Tietê</p>
+                            <br>
+                            <p class="product-date">Ultima atualização de preço: {{ $data ? $data->format('d/m/Y H:i:s') : 'Data não disponível' }}</p>
+                            <br>
+                            <br>
+                            <p class="product-review-label">Avalie a veracidade do preço do produto:</p>
+                            <form action="{{ route('avaliacao_produto') }}" class="d-inline" method="POST">
+                                <input type="hidden" name="id_produto" value="2"> <!-- ID do produto -->
+                                <input type="hidden" name="id_mercado" value="2"> <!-- ID do mercado -->
+                                @csrf
+                                <div class="input-group input-group-sm">
+                                    <select name="avaliacao_preco" class="form-select" aria-label="Default select example">
+                                        <option value="Correto">Correto</option>
+                                        <option value="Incorreto">Incorreto</option>
+                                    </select>
+                                    <button class="btn btn-outline-secondary" type="submit">
+                                        <i class="">Registrar</i> <br>
+                                    </button>
+                                    @php
+                                    // Contando as avaliações
+                                    $correto = App\Models\AvaliacaoProduto::where('avaliacao_preco', 'Correto')
+                                    ->where('id_mercado', 2) // ID do mercado
+                                    ->where('id_produto', 2) // ID do produto
+                                    ->count();
+
+                                    $incorreto = App\Models\AvaliacaoProduto::where('avaliacao_preco', 'Incorreto')
+                                    ->where('id_mercado', 2) // ID do mercado
+                                    ->where('id_produto', 2) // ID do produto
+                                    ->count();
+                                    @endphp
+                                    <h6 class="mt-4">Quantidade de Avaliações:</h6>
+                                    <p id="product-quantity" class="text-success">O preço está correto: <strong>{{ $correto }}</strong></p>
+                                    <p class="text-danger">O preço está incorreto: <strong>{{ $incorreto }}</strong></p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="product-card">
+                        <img src="images/pr_arroz2.png" alt="Imagem do Produto 7">
+                        <div class="product-info">
+                            @php
+                            // Verifique se o produto já foi favoritado
+                            $favoritoExistente = \App\Models\Favorito::where('user_id', auth()->id())
+                            ->where('id_mercado', 3) // ID do mercado
+                            ->where('id_produto', 2) // ID do produto
+                            ->exists();
+                            @endphp
+                            <form action="{{ $favoritoExistente ? route('favoritar_remover') : route('favoritar') }}" method="POST"> @csrf
+                                <input type="hidden" name="id_produto" value="2">
+                                <input type="hidden" name="id_mercado" value="3">
+                                <button type="submit" class="btn btn-danger favorite-button">
+                                    @if($favoritoExistente)
+                                    <!-- Exibe o coração preenchido se for favorito -->
+                                    <i class="fas fa-heart heart-filled"></i>
+                                    @else
+                                    <!-- Exibe o coração vazio se não for favorito -->
+                                    <i class="far fa-heart heart-empty"></i>
+                                    @endif
+                                </button>
+                            </form>
+                            <br>
+                            <p class="product-name">Arroz Tipo 1 TIO JOÃO Pacote 5kg</p>
+                            @php
+                            // apresentando a media de preços
+                            $precomedio = App\Models\ProdutosCaracteristicas::where('id_mercado', 3) // ID do mercado
+                            ->where('id_produto', 2) // ID do produto
+                            ->avg('preco');
+                            $data = App\Models\ProdutosCaracteristicas::where('id_mercado', 3) // ID do mercado
+                            ->where('id_produto', 2) // ID do produto
+                            ->latest('updated_at')
+                            ->value('updated_at');
+
+                            // Ajustar o timezone
+                            if ($data) {
+
+
+                            $data = \Carbon\Carbon::parse($data)->setTimezone('America/Sao_Paulo');
+                            }
+                            @endphp
+                            <p class="product-price">R$ {{ number_format($precomedio, 2, ',', '.') }}</p>
+                            <p class="market-name">Mercado Economix</p>
+                            <br>
+                            <p class="product-date">Ultima atualização de preço: {{ $data ? $data->format('d/m/Y H:i:s') : 'Data não disponível' }}</p>
+                            <br>
+                            <br>
+                            <p class="product-review-label">Avalie a veracidade do preço do produto:</p>
+                            <form action="{{ route('avaliacao_produto') }}" class="d-inline" method="POST">
+                                <input type="hidden" name="id_produto" value="2"> <!-- ID do produto -->
+                                <input type="hidden" name="id_mercado" value="3"> <!-- ID do mercado -->
+                                @csrf
+                                <div class="input-group input-group-sm">
+                                    <select name="avaliacao_preco" class="form-select" aria-label="Default select example">
+                                        <option value="Correto">Correto</option>
+                                        <option value="Incorreto">Incorreto</option>
+                                    </select>
+                                    <button class="btn btn-outline-secondary" type="submit">
+                                        <i class="">Registrar</i> <br>
+                                    </button>
+                                    @php
+                                    // Contando as avaliações
+                                    $correto = App\Models\AvaliacaoProduto::where('avaliacao_preco', 'Correto')
+                                    ->where('id_mercado', 3) // ID do mercado
+                                    ->where('id_produto', 2) // ID do produto
+                                    ->count();
+
+                                    $incorreto = App\Models\AvaliacaoProduto::where('avaliacao_preco', 'Incorreto')
+                                    ->where('id_mercado', 3) // ID do mercado
+                                    ->where('id_produto', 2) // ID do produto
+                                    ->count();
+                                    @endphp
+                                    <h6 class="mt-4">Quantidade de Avaliações:</h6>
+                                    <p id="product-quantity" class="text-success">O preço está correto: <strong>{{ $correto }}</strong></p>
+                                    <p class="text-danger">O preço está incorreto: <strong>{{ $incorreto }}</strong></p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="product-card">
+                        <img src="images/pr_arroz2.png" alt="Imagem do Produto 8">
+                        <div class="product-info">
+                            @php
+                            // Verifique se o produto já foi favoritado
+                            $favoritoExistente = \App\Models\Favorito::where('user_id', auth()->id())
+                            ->where('id_mercado', 4) // ID do mercado
+                            ->where('id_produto', 2) // ID do produto
+                            ->exists();
+                            @endphp
+                            <form action="{{ $favoritoExistente ? route('favoritar_remover') : route('favoritar') }}" method="POST"> @csrf
+                                <input type="hidden" name="id_produto" value="2">
+                                <input type="hidden" name="id_mercado" value="4">
+                                <button type="submit" class="btn btn-danger favorite-button">
+                                    @if($favoritoExistente)
+                                    <!-- Exibe o coração preenchido se for favorito -->
+                                    <i class="fas fa-heart heart-filled"></i>
+                                    @else
+                                    <!-- Exibe o coração vazio se não for favorito -->
+                                    <i class="far fa-heart heart-empty"></i>
+                                    @endif
+                                </button>
+                            </form>
+                            <br>
+                            <p class="product-name">Arroz Tipo 1 TIO JOÃO Pacote 5kg</p>
+                            @php
+                            // apresentando a media de preços
+                            $precomedio = App\Models\ProdutosCaracteristicas::where('id_mercado', 4) // ID do mercado
+                            ->where('id_produto', 2) // ID do produto
+                            ->avg('preco');
+                            $data = App\Models\ProdutosCaracteristicas::where('id_mercado', 4) // ID do mercado
+                            ->where('id_produto', 2) // ID do produto
+                            ->latest('updated_at')
+                            ->value('updated_at');
+
+                            // Ajustar o timezone
+                            if ($data) {
+
+
+                            $data = \Carbon\Carbon::parse($data)->setTimezone('America/Sao_Paulo');
+                            }
+                            @endphp
+                            <p class="product-price">R$ {{ number_format($precomedio, 2, ',', '.') }}</p>
+                            <p class="market-name">Mercado Atacadinho</p>
+                            <br>
+                            <p class="product-date">Ultima atualização de preço: {{ $data ? $data->format('d/m/Y H:i:s') : 'Data não disponível' }}</p>
+                            <br>
+                            <br>
+                            <p class="product-review-label">Avalie a veracidade do preço do produto:</p>
+                            <form action="{{ route('avaliacao_produto') }}" class="d-inline" method="POST">
+                                <input type="hidden" name="id_produto" value="2"> <!-- ID do produto -->
+                                <input type="hidden" name="id_mercado" value="4"> <!-- ID do mercado -->
+                                @csrf
+                                <div class="input-group input-group-sm">
+                                    <select name="avaliacao_preco" class="form-select" aria-label="Default select example">
+                                        <option value="Correto">Correto</option>
+                                        <option value="Incorreto">Incorreto</option>
+                                    </select>
+                                    <button class="btn btn-outline-secondary" type="submit">
+                                        <i class="">Registrar</i> <br>
+                                    </button>
+                                    @php
+                                    // Contando as avaliações
+                                    $correto = App\Models\AvaliacaoProduto::where('avaliacao_preco', 'Correto')
+                                    ->where('id_mercado', 4) // ID do mercado
+                                    ->where('id_produto', 2) // ID do produto
+                                    ->count();
+
+                                    $incorreto = App\Models\AvaliacaoProduto::where('avaliacao_preco', 'Incorreto')
+                                    ->where('id_mercado', 4) // ID do mercado
+                                    ->where('id_produto', 2) // ID do produto
+                                    ->count();
+                                    @endphp
+                                    <h6 class="mt-4">Quantidade de Avaliações:</h6>
+                                    <p id="product-quantity" class="text-success">O preço está correto: <strong>{{ $correto }}</strong></p>
+                                    <p class="text-danger">O preço está incorreto: <strong>{{ $incorreto }}</strong></p>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <br>
-        <br>
-
-        <!-- Produtos -->
-        <div class="row" id="produtos-container">
-            <div class="col-lg-4 col-md-4">
-                <div class="product-card">
-                    <img src="images/pr_arroz.png" alt="Imagem do Produto 1">
-                    <div class="product-info">
-                        <form action="{{ route('favoritar') }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="id_produto" value="1">
-                            <input type="hidden" name="id_mercado" value="1">
-                            <button class="btn btn-danger favorite-button">
-                                <i class="far fa-heart heart-empty"></i>
-                                <i class="fas fa-heart heart-filled" style="display:none;"></i>
-                            </button>
-                        </form>
-                        <br>
-                        <p class="product-name">Arroz Tipo 1 CAMIL Pacote 5kg</p>
-                        @php
-                        // apresentando a media de preços
-                        $precomedio = App\Models\ProdutosCaracteristicas::where('id_mercado', 1) // ID do mercado
-                        ->where('id_produto', 1) // ID do produto
-                        ->avg('preco');
-                        $data = App\Models\ProdutosCaracteristicas::where('id_mercado', 1) // ID do mercado
-                        ->where('id_produto', 1) // ID do produto
-                        ->latest('updated_at')
-                        ->value('updated_at');
-
-                        // Ajustar o timezone
-                        if ($data) {
-
-
-                        $data = \Carbon\Carbon::parse($data)->setTimezone('America/Sao_Paulo');
-                        }
-                        @endphp
-                        <p class="product-price">R$ {{ number_format($precomedio, 2, ',', '.') }}</p>
-                        <p class="market-name">Mercado Noemia</p>
-                        <br>
-                        <p class="product-date">Ultima atualização de preço: {{ $data ? $data->format('d/m/Y H:i:s') : 'Data não disponível' }}</p>
-                        <br>
-                        <br>
-                        <p class="product-review-label">Avalie a veracidade do preço do produto:</p>
-                        <form action="{{ route('avaliacao_produto') }}" class="d-inline" method="POST">
-                            <input type="hidden" name="id_produto" value="1"> <!-- ID do produto -->
-                            <input type="hidden" name="id_mercado" value="1"> <!-- ID do mercado -->
-                            @csrf
-                            <div class="input-group input-group-sm">
-                                <select name="avaliacao_preco" class="form-select" aria-label="Default select example">
-                                    <option value="Correto">Correto</option>
-                                    <option value="Incorreto">Incorreto</option>
-                                </select>
-                                <button class="btn btn-outline-secondary" type="submit">
-                                    <i class="">Registrar</i> <br>
-                                </button>
-                                @php
-                                // Contando as avaliações
-                                $correto = App\Models\AvaliacaoProduto::where('avaliacao_preco', 'Correto')
-                                ->where('id_mercado', 1) // ID do mercado
-                                ->where('id_produto', 1) // ID do produto
-                                ->count();
-
-                                $incorreto = App\Models\AvaliacaoProduto::where('avaliacao_preco', 'Incorreto')
-                                ->where('id_mercado', 1) // ID do mercado
-                                ->where('id_produto', 1) // ID do produto
-                                ->count();
-                                @endphp
-                                <h6 class="mt-4">Quantidade de Avaliações:</h6>
-                                <p id="product-quantity" class="text-success">O preço está correto: <strong>{{ $correto }}</strong></p>
-                                <p class="text-danger">O preço está incorreto: <strong>{{ $incorreto }}</strong></p>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="product-card">
-                    <img src="images/pr_arroz.png" alt="Imagem do Produto 2">
-                    <div class="product-info">
-                        <form action="{{ route('favoritar') }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="id_produto" value="1">
-                            <input type="hidden" name="id_mercado" value="2">
-                            <button class="btn btn-danger favorite-button">
-                                <i class="far fa-heart heart-empty"></i>
-                                <i class="fas fa-heart heart-filled" style="display:none;"></i>
-                            </button>
-                        </form>
-                        <br>
-                        <p class="product-name">Arroz Tipo 1 CAMIL Pacote 5kg</p>
-                        @php
-                        // apresentando a media de preços
-                        $precomedio = App\Models\ProdutosCaracteristicas::where('id_mercado', 2) // ID do mercado
-                        ->where('id_produto', 1) // ID do produto
-                        ->avg('preco');
-                        $data = App\Models\ProdutosCaracteristicas::where('id_mercado', 2) // ID do mercado
-                        ->where('id_produto', 1) // ID do produto
-                        ->latest('updated_at')
-                        ->value('updated_at');
-
-                        // Ajustar o timezone
-                        if ($data) {
-
-
-                        $data = \Carbon\Carbon::parse($data)->setTimezone('America/Sao_Paulo');
-                        }
-                        @endphp
-                        <p class="product-price">R$ {{ number_format($precomedio, 2, ',', '.') }}</p>
-                        <p class="market-name">Mercado Tietê</p>
-                        <br>
-                        <p class="product-date">Ultima atualização de preço: {{ $data ? $data->format('d/m/Y H:i:s') : 'Data não disponível' }}</p>
-                        <br>
-                        <br>
-                        <p class="product-review-label">Avalie a veracidade do preço do produto:</p>
-                        <form action="{{ route('avaliacao_produto') }}" class="d-inline" method="POST">
-                            <input type="hidden" name="id_produto" value="1"> <!-- ID do produto -->
-                            <input type="hidden" name="id_mercado" value="2"> <!-- ID do mercado -->
-                            @csrf
-                            <div class="input-group input-group-sm">
-                                <select name="avaliacao_preco" class="form-select" aria-label="Default select example">
-                                    <option value="Correto">Correto</option>
-                                    <option value="Incorreto">Incorreto</option>
-                                </select>
-                                <button class="btn btn-outline-secondary" type="submit">
-                                    <i class="">Registrar</i> <br>
-                                </button>
-                                @php
-                                // Contando as avaliações
-                                $correto = App\Models\AvaliacaoProduto::where('avaliacao_preco', 'Correto')
-                                ->where('id_mercado', 2) // ID do mercado
-                                ->where('id_produto', 1) // ID do produto
-                                ->count();
-
-                                $incorreto = App\Models\AvaliacaoProduto::where('avaliacao_preco', 'Incorreto')
-                                ->where('id_mercado', 2) // ID do mercado
-                                ->where('id_produto', 1) // ID do produto
-                                ->count();
-                                @endphp
-                                <h6 class="mt-4">Quantidade de Avaliações:</h6>
-                                <p id="product-quantity" class="text-success">O preço está correto: <strong>{{ $correto }}</strong></p>
-                                <p class="text-danger">O preço está incorreto: <strong>{{ $incorreto }}</strong></p>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="product-card">
-                    <img src="images/pr_arroz.png" alt="Imagem do Produto 3">
-                    <div class="product-info">
-                        <form action="{{ route('favoritar') }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="id_produto" value="1">
-                            <input type="hidden" name="id_mercado" value="3">
-                            <button class="btn btn-danger favorite-button">
-                                <i class="far fa-heart heart-empty"></i>
-                                <i class="fas fa-heart heart-filled" style="display:none;"></i>
-                            </button>
-                        </form>
-                        <br>
-                        <p class="product-name">Arroz Tipo 1 CAMIL Pacote 5kg</p>
-                        @php
-                        // apresentando a media de preços
-                        $precomedio = App\Models\ProdutosCaracteristicas::where('id_mercado', 3) // ID do mercado
-                        ->where('id_produto', 1) // ID do produto
-                        ->avg('preco');
-                        $data = App\Models\ProdutosCaracteristicas::where('id_mercado', 3) // ID do mercado
-                        ->where('id_produto', 1) // ID do produto
-                        ->latest('updated_at')
-                        ->value('updated_at');
-
-                        // Ajustar o timezone
-                        if ($data) {
-
-
-                        $data = \Carbon\Carbon::parse($data)->setTimezone('America/Sao_Paulo');
-                        }
-                        @endphp
-                        <p class="product-price">R$ {{ number_format($precomedio, 2, ',', '.') }}</p>
-                        <p class="market-name">Mercado Economix</p>
-                        <br>
-                        <p class="product-date">Ultima atualização de preço: {{ $data ? $data->format('d/m/Y H:i:s') : 'Data não disponível' }}</p>
-                        <br>
-                        <br>
-                        <p class="product-review-label">Avalie a veracidade do preço do produto:</p>
-                        <form action="{{ route('avaliacao_produto') }}" class="d-inline" method="POST">
-                            <input type="hidden" name="id_produto" value="1"> <!-- ID do produto -->
-                            <input type="hidden" name="id_mercado" value="3"> <!-- ID do mercado -->
-                            @csrf
-                            <div class="input-group input-group-sm">
-                                <select name="avaliacao_preco" class="form-select" aria-label="Default select example">
-                                    <option value="Correto">Correto</option>
-                                    <option value="Incorreto">Incorreto</option>
-                                </select>
-                                <button class="btn btn-outline-secondary" type="submit">
-                                    <i class="">Registrar</i> <br>
-                                </button>
-                                @php
-                                // Contando as avaliações
-                                $correto = App\Models\AvaliacaoProduto::where('avaliacao_preco', 'Correto')
-                                ->where('id_mercado', 3) // ID do mercado
-                                ->where('id_produto', 1) // ID do produto
-                                ->count();
-
-                                $incorreto = App\Models\AvaliacaoProduto::where('avaliacao_preco', 'Incorreto')
-                                ->where('id_mercado', 3) // ID do mercado
-                                ->where('id_produto', 1) // ID do produto
-                                ->count();
-                                @endphp
-                                <h6 class="mt-4">Quantidade de Avaliações:</h6>
-                                <p id="product-quantity" class="text-success">O preço está correto: <strong>{{ $correto }}</strong></p>
-                                <p class="text-danger">O preço está incorreto: <strong>{{ $incorreto }}</strong></p>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="product-card">
-                    <img src="images/pr_arroz.png" alt="Imagem do Produto 4">
-                    <div class="product-info">
-                        <form action="{{ route('favoritar') }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="id_produto" value="1">
-                            <input type="hidden" name="id_mercado" value="4">
-                            <button class="btn btn-danger favorite-button">
-                                <i class="far fa-heart heart-empty"></i>
-                                <i class="fas fa-heart heart-filled" style="display:none;"></i>
-                            </button>
-                        </form>
-                        <br>
-                        <p class="product-name">Arroz Tipo 1 CAMIL Pacote 5kg</p>
-                        @php
-                        // apresentando a media de preços
-                        $precomedio = App\Models\ProdutosCaracteristicas::where('id_mercado', 4) // ID do mercado
-                        ->where('id_produto', 1) // ID do produto
-                        ->avg('preco');
-                        $data = App\Models\ProdutosCaracteristicas::where('id_mercado', 4) // ID do mercado
-                        ->where('id_produto', 1) // ID do produto
-                        ->latest('updated_at')
-                        ->value('updated_at');
-
-                        // Ajustar o timezone
-                        if ($data) {
-
-
-                        $data = \Carbon\Carbon::parse($data)->setTimezone('America/Sao_Paulo');
-                        }
-                        @endphp
-                        <p class="product-price">R$ {{ number_format($precomedio, 2, ',', '.') }}</p>
-                        <p class="market-name">Mercado Atacadinho</p>
-                        <br>
-                        <p class="product-date">Ultima atualização de preço: {{ $data ? $data->format('d/m/Y H:i:s') : 'Data não disponível' }}</p>
-                        <br>
-                        <br>
-                        <p class="product-review-label">Avalie a veracidade do preço do produto:</p>
-                        <form action="{{ route('avaliacao_produto') }}" class="d-inline" method="POST">
-                            <input type="hidden" name="id_produto" value="1"> <!-- ID do produto -->
-                            <input type="hidden" name="id_mercado" value="4"> <!-- ID do mercado -->
-                            @csrf
-                            <div class="input-group input-group-sm">
-                                <select name="avaliacao_preco" class="form-select" aria-label="Default select example">
-                                    <option value="Correto">Correto</option>
-                                    <option value="Incorreto">Incorreto</option>
-                                </select>
-                                <button class="btn btn-outline-secondary" type="submit">
-                                    <i class="">Registrar</i> <br>
-                                </button>
-                                @php
-                                // Contando as avaliações
-                                $correto = App\Models\AvaliacaoProduto::where('avaliacao_preco', 'Correto')
-                                ->where('id_mercado', 4) // ID do mercado
-                                ->where('id_produto', 1) // ID do produto
-                                ->count();
-
-                                $incorreto = App\Models\AvaliacaoProduto::where('avaliacao_preco', 'Incorreto')
-                                ->where('id_mercado', 4) // ID do mercado
-                                ->where('id_produto', 1) // ID do produto
-                                ->count();
-                                @endphp
-                                <h6 class="mt-4">Quantidade de Avaliações:</h6>
-                                <p id="product-quantity" class="text-success">O preço está correto: <strong>{{ $correto }}</strong></p>
-                                <p class="text-danger">O preço está incorreto: <strong>{{ $incorreto }}</strong></p>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="product-card">
-                    <img src="images/pr_arroz2.png" alt="Imagem do Produto 5">
-                    <div class="product-info">
-                        <form action="{{ route('favoritar') }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="id_produto" value="2">
-                            <input type="hidden" name="id_mercado" value="1">
-                            <button class="btn btn-danger favorite-button">
-                                <i class="far fa-heart heart-empty"></i>
-                                <i class="fas fa-heart heart-filled" style="display:none;"></i>
-                            </button>
-                        </form>
-                        <br>
-                        <p class="product-name">Arroz Tipo 1 TIO JOÃO Pacote 5kg</p>
-                        @php
-                        // apresentando a media de preços
-                        $precomedio = App\Models\ProdutosCaracteristicas::where('id_mercado', 1) // ID do mercado
-                        ->where('id_produto', 2) // ID do produto
-                        ->avg('preco');
-                        $data = App\Models\ProdutosCaracteristicas::where('id_mercado', 1) // ID do mercado
-                        ->where('id_produto', 2) // ID do produto
-                        ->latest('updated_at')
-                        ->value('updated_at');
-
-                        // Ajustar o timezone
-                        if ($data) {
-
-
-                        $data = \Carbon\Carbon::parse($data)->setTimezone('America/Sao_Paulo');
-                        }
-                        @endphp
-                        <p class="product-price">R$ {{ number_format($precomedio, 2, ',', '.') }}</p>
-                        <p class="market-name">Mercado Noemia</p>
-                        <br>
-                        <p class="product-date">Ultima atualização de preço: {{ $data ? $data->format('d/m/Y H:i:s') : 'Data não disponível' }}</p>
-                        <br>
-                        <br>
-                        <p class="product-review-label">Avalie a veracidade do preço do produto:</p>
-                        <form action="{{ route('avaliacao_produto') }}" class="d-inline" method="POST">
-                            <input type="hidden" name="id_produto" value="2"> <!-- ID do produto -->
-                            <input type="hidden" name="id_mercado" value="1"> <!-- ID do mercado -->
-                            @csrf
-                            <div class="input-group input-group-sm">
-                                <select name="avaliacao_preco" class="form-select" aria-label="Default select example">
-                                    <option value="Correto">Correto</option>
-                                    <option value="Incorreto">Incorreto</option>
-                                </select>
-                                <button class="btn btn-outline-secondary" type="submit">
-                                    <i class="">Registrar</i> <br>
-                                </button>
-                                @php
-                                // Contando as avaliações
-                                $correto = App\Models\AvaliacaoProduto::where('avaliacao_preco', 'Correto')
-                                ->where('id_mercado', 1) // ID do mercado
-                                ->where('id_produto', 2) // ID do produto
-                                ->count();
-
-                                $incorreto = App\Models\AvaliacaoProduto::where('avaliacao_preco', 'Incorreto')
-                                ->where('id_mercado', 1) // ID do mercado
-                                ->where('id_produto', 2) // ID do produto
-                                ->count();
-                                @endphp
-                                <h6 class="mt-4">Quantidade de Avaliações:</h6>
-                                <p id="product-quantity" class="text-success">O preço está correto: <strong>{{ $correto }}</strong></p>
-                                <p class="text-danger">O preço está incorreto: <strong>{{ $incorreto }}</strong></p>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="product-card">
-                    <img src="images/pr_arroz2.png" alt="Imagem do Produto 6">
-                    <div class="product-info">
-                        <form action="{{ route('favoritar') }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="id_produto" value="2">
-                            <input type="hidden" name="id_mercado" value="2">
-                            <button class="btn btn-danger favorite-button">
-                                <i class="far fa-heart heart-empty"></i>
-                                <i class="fas fa-heart heart-filled" style="display:none;"></i>
-                            </button>
-                        </form>
-                        <br>
-                        <p class="product-name">Arroz Tipo 1 TIO JOÃO Pacote 5kg</p>
-                        @php
-                        // apresentando a media de preços
-                        $precomedio = App\Models\ProdutosCaracteristicas::where('id_mercado', 2) // ID do mercado
-                        ->where('id_produto', 2) // ID do produto
-                        ->avg('preco');
-                        $data = App\Models\ProdutosCaracteristicas::where('id_mercado', 2) // ID do mercado
-                        ->where('id_produto', 2) // ID do produto
-                        ->latest('updated_at')
-                        ->value('updated_at');
-
-                        // Ajustar o timezone
-                        if ($data) {
-
-
-                        $data = \Carbon\Carbon::parse($data)->setTimezone('America/Sao_Paulo');
-                        }
-                        @endphp
-                        <p class="product-price">R$ {{ number_format($precomedio, 2, ',', '.') }}</p>
-                        <p class="market-name">Mercado Tietê</p>
-                        <br>
-                        <p class="product-date">Ultima atualização de preço: {{ $data ? $data->format('d/m/Y H:i:s') : 'Data não disponível' }}</p>
-                        <br>
-                        <br>
-                        <p class="product-review-label">Avalie a veracidade do preço do produto:</p>
-                        <form action="{{ route('avaliacao_produto') }}" class="d-inline" method="POST">
-                            <input type="hidden" name="id_produto" value="2"> <!-- ID do produto -->
-                            <input type="hidden" name="id_mercado" value="2"> <!-- ID do mercado -->
-                            @csrf
-                            <div class="input-group input-group-sm">
-                                <select name="avaliacao_preco" class="form-select" aria-label="Default select example">
-                                    <option value="Correto">Correto</option>
-                                    <option value="Incorreto">Incorreto</option>
-                                </select>
-                                <button class="btn btn-outline-secondary" type="submit">
-                                    <i class="">Registrar</i> <br>
-                                </button>
-                                @php
-                                // Contando as avaliações
-                                $correto = App\Models\AvaliacaoProduto::where('avaliacao_preco', 'Correto')
-                                ->where('id_mercado', 2) // ID do mercado
-                                ->where('id_produto', 2) // ID do produto
-                                ->count();
-
-                                $incorreto = App\Models\AvaliacaoProduto::where('avaliacao_preco', 'Incorreto')
-                                ->where('id_mercado', 2) // ID do mercado
-                                ->where('id_produto', 2) // ID do produto
-                                ->count();
-                                @endphp
-                                <h6 class="mt-4">Quantidade de Avaliações:</h6>
-                                <p id="product-quantity" class="text-success">O preço está correto: <strong>{{ $correto }}</strong></p>
-                                <p class="text-danger">O preço está incorreto: <strong>{{ $incorreto }}</strong></p>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="product-card">
-                    <img src="images/pr_arroz2.png" alt="Imagem do Produto 7">
-                    <div class="product-info">
-                        <form action="{{ route('favoritar') }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="id_produto" value="2">
-                            <input type="hidden" name="id_mercado" value="3">
-                            <button class="btn btn-danger favorite-button">
-                                <i class="far fa-heart heart-empty"></i>
-                                <i class="fas fa-heart heart-filled" style="display:none;"></i>
-                            </button>
-                        </form>
-                        <br>
-                        <p class="product-name">Arroz Tipo 1 TIO JOÃO Pacote 5kg</p>
-                        @php
-                        // apresentando a media de preços
-                        $precomedio = App\Models\ProdutosCaracteristicas::where('id_mercado', 3) // ID do mercado
-                        ->where('id_produto', 2) // ID do produto
-                        ->avg('preco');
-                        $data = App\Models\ProdutosCaracteristicas::where('id_mercado', 3) // ID do mercado
-                        ->where('id_produto', 2) // ID do produto
-                        ->latest('updated_at')
-                        ->value('updated_at');
-
-                        // Ajustar o timezone
-                        if ($data) {
-
-
-                        $data = \Carbon\Carbon::parse($data)->setTimezone('America/Sao_Paulo');
-                        }
-                        @endphp
-                        <p class="product-price">R$ {{ number_format($precomedio, 2, ',', '.') }}</p>
-                        <p class="market-name">Mercado Economix</p>
-                        <br>
-                        <p class="product-date">Ultima atualização de preço: {{ $data ? $data->format('d/m/Y H:i:s') : 'Data não disponível' }}</p>
-                        <br>
-                        <br>
-                        <p class="product-review-label">Avalie a veracidade do preço do produto:</p>
-                        <form action="{{ route('avaliacao_produto') }}" class="d-inline" method="POST">
-                            <input type="hidden" name="id_produto" value="2"> <!-- ID do produto -->
-                            <input type="hidden" name="id_mercado" value="3"> <!-- ID do mercado -->
-                            @csrf
-                            <div class="input-group input-group-sm">
-                                <select name="avaliacao_preco" class="form-select" aria-label="Default select example">
-                                    <option value="Correto">Correto</option>
-                                    <option value="Incorreto">Incorreto</option>
-                                </select>
-                                <button class="btn btn-outline-secondary" type="submit">
-                                    <i class="">Registrar</i> <br>
-                                </button>
-                                @php
-                                // Contando as avaliações
-                                $correto = App\Models\AvaliacaoProduto::where('avaliacao_preco', 'Correto')
-                                ->where('id_mercado', 3) // ID do mercado
-                                ->where('id_produto', 2) // ID do produto
-                                ->count();
-
-                                $incorreto = App\Models\AvaliacaoProduto::where('avaliacao_preco', 'Incorreto')
-                                ->where('id_mercado', 3) // ID do mercado
-                                ->where('id_produto', 2) // ID do produto
-                                ->count();
-                                @endphp
-                                <h6 class="mt-4">Quantidade de Avaliações:</h6>
-                                <p id="product-quantity" class="text-success">O preço está correto: <strong>{{ $correto }}</strong></p>
-                                <p class="text-danger">O preço está incorreto: <strong>{{ $incorreto }}</strong></p>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="product-card">
-                    <img src="images/pr_arroz2.png" alt="Imagem do Produto 8">
-                    <div class="product-info">
-                        <form action="{{ route('favoritar') }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="id_produto" value="2">
-                            <input type="hidden" name="id_mercado" value="4">
-                            <button class="btn btn-danger favorite-button">
-                                <i class="far fa-heart heart-empty"></i>
-                                <i class="fas fa-heart heart-filled" style="display:none;"></i>
-                            </button>
-                        </form>
-                        <br>
-                        <p class="product-name">Arroz Tipo 1 TIO JOÃO Pacote 5kg</p>
-                        @php
-                        // apresentando a media de preços
-                        $precomedio = App\Models\ProdutosCaracteristicas::where('id_mercado', 4) // ID do mercado
-                        ->where('id_produto', 2) // ID do produto
-                        ->avg('preco');
-                        $data = App\Models\ProdutosCaracteristicas::where('id_mercado', 4) // ID do mercado
-                        ->where('id_produto', 2) // ID do produto
-                        ->latest('updated_at')
-                        ->value('updated_at');
-
-                        // Ajustar o timezone
-                        if ($data) {
-
-
-                        $data = \Carbon\Carbon::parse($data)->setTimezone('America/Sao_Paulo');
-                        }
-                        @endphp
-                        <p class="product-price">R$ {{ number_format($precomedio, 2, ',', '.') }}</p>
-                        <p class="market-name">Mercado Atacadinho</p>
-                        <br>
-                        <p class="product-date">Ultima atualização de preço: {{ $data ? $data->format('d/m/Y H:i:s') : 'Data não disponível' }}</p>
-                        <br>
-                        <br>
-                        <p class="product-review-label">Avalie a veracidade do preço do produto:</p>
-                        <form action="{{ route('avaliacao_produto') }}" class="d-inline" method="POST">
-                            <input type="hidden" name="id_produto" value="2"> <!-- ID do produto -->
-                            <input type="hidden" name="id_mercado" value="4"> <!-- ID do mercado -->
-                            @csrf
-                            <div class="input-group input-group-sm">
-                                <select name="avaliacao_preco" class="form-select" aria-label="Default select example">
-                                    <option value="Correto">Correto</option>
-                                    <option value="Incorreto">Incorreto</option>
-                                </select>
-                                <button class="btn btn-outline-secondary" type="submit">
-                                    <i class="">Registrar</i> <br>
-                                </button>
-                                @php
-                                // Contando as avaliações
-                                $correto = App\Models\AvaliacaoProduto::where('avaliacao_preco', 'Correto')
-                                ->where('id_mercado', 4) // ID do mercado
-                                ->where('id_produto', 2) // ID do produto
-                                ->count();
-
-                                $incorreto = App\Models\AvaliacaoProduto::where('avaliacao_preco', 'Incorreto')
-                                ->where('id_mercado', 4) // ID do mercado
-                                ->where('id_produto', 2) // ID do produto
-                                ->count();
-                                @endphp
-                                <h6 class="mt-4">Quantidade de Avaliações:</h6>
-                                <p id="product-quantity" class="text-success">O preço está correto: <strong>{{ $correto }}</strong></p>
-                                <p class="text-danger">O preço está incorreto: <strong>{{ $incorreto }}</strong></p>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     </div>
     <br>

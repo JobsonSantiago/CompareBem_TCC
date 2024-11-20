@@ -134,42 +134,42 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown" onmouseenter="keepDropdown()" onmouseleave="hideDropdown()">
                                 <li><a class="dropdown-item" href="{{ route('cadastro_produto') }}">Cadastrar Preço do Produto</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                 @if(session('success'))
-                <div class="alert alert-success alert-dismissible fade show position-fixed top-0 end-0 m-3" role="alert" id="success-alert">
-                    {{ session('success') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-
-                <script>
-                    setTimeout(function() {
-                        var alert = document.getElementById('success-alert');
-                        if (alert) {
-                            alert.classList.remove('show');
-                            alert.classList.add('fade');
-                        }
-                    }, 5000); // 5000ms = 5 segundos
-                </script>
-                @endif
-                @if(session('error'))
-                <div class="alert alert-danger alert-dismissible fade show position-fixed top-0 end-0 m-3" role="alert" id="error-alert">
-                    {{ session('error') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                <script>
-                    setTimeout(function() {
-                        var alert = document.getElementById('error-alert');
-                        if (alert) {
-                            alert.classList.remove('show');
-                            alert.classList.add('fade');
-                        }
-                    }, 5000); // 5000ms = 5 segundos
-                </script>
-                @endif
                             </ul>
                         </li>
+                    </ul>
+                    @if(session('success'))
+                    <div class="alert alert-success alert-dismissible fade show position-fixed top-0 end-0 m-3" role="alert" id="success-alert">
+                        {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
+                    <script>
+                        setTimeout(function() {
+                            var alert = document.getElementById('success-alert');
+                            if (alert) {
+                                alert.classList.remove('show');
+                                alert.classList.add('fade');
+                            }
+                        }, 5000); // 5000ms = 5 segundos
+                    </script>
+                    @endif
+                    @if(session('error'))
+                    <div class="alert alert-danger alert-dismissible fade show position-fixed top-0 end-0 m-3" role="alert" id="error-alert">
+                        {{ session('error') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <script>
+                        setTimeout(function() {
+                            var alert = document.getElementById('error-alert');
+                            if (alert) {
+                                alert.classList.remove('show');
+                                alert.classList.add('fade');
+                            }
+                        }, 5000); // 5000ms = 5 segundos
+                    </script>
+                    @endif
+                    </ul>
+                    </li>
                     </ul>
                 </div>
 
@@ -288,13 +288,24 @@
                             </button>
                         </div>
                         <div class="product-info">
-                            <form action="{{ route('favoritar') }}" method="POST">
-                                @csrf
+                            @php
+                            // Verifique se o produto já foi favoritado
+                            $favoritoExistente = \App\Models\Favorito::where('user_id', auth()->id())
+                            ->where('id_mercado', 1) // ID do mercado
+                            ->where('id_produto', 37) // ID do produto
+                            ->exists();
+                            @endphp
+                            <form action="{{ $favoritoExistente ? route('favoritar_remover') : route('favoritar') }}" method="POST"> @csrf
                                 <input type="hidden" name="id_produto" value="37">
                                 <input type="hidden" name="id_mercado" value="1">
-                                <button class="btn btn-danger favorite-button">
+                                <button type="submit" class="btn btn-danger favorite-button">
+                                    @if($favoritoExistente)
+                                    <!-- Exibe o coração preenchido se for favorito -->
+                                    <i class="fas fa-heart heart-filled"></i>
+                                    @else
+                                    <!-- Exibe o coração vazio se não for favorito -->
                                     <i class="far fa-heart heart-empty"></i>
-                                    <i class="fas fa-heart heart-filled" style="display:none;"></i>
+                                    @endif
                                 </button>
                             </form>
                             <br>
@@ -390,13 +401,24 @@
                             </button>
                         </div>
                         <div class="product-info">
-                            <form action="{{ route('favoritar') }}" method="POST">
-                                @csrf
+                            @php
+                            // Verifique se o produto já foi favoritado
+                            $favoritoExistente = \App\Models\Favorito::where('user_id', auth()->id())
+                            ->where('id_mercado', 2) // ID do mercado
+                            ->where('id_produto', 37) // ID do produto
+                            ->exists();
+                            @endphp
+                            <form action="{{ $favoritoExistente ? route('favoritar_remover') : route('favoritar') }}" method="POST"> @csrf
                                 <input type="hidden" name="id_produto" value="37">
                                 <input type="hidden" name="id_mercado" value="2">
-                                <button class="btn btn-danger favorite-button">
+                                <button type="submit" class="btn btn-danger favorite-button">
+                                    @if($favoritoExistente)
+                                    <!-- Exibe o coração preenchido se for favorito -->
+                                    <i class="fas fa-heart heart-filled"></i>
+                                    @else
+                                    <!-- Exibe o coração vazio se não for favorito -->
                                     <i class="far fa-heart heart-empty"></i>
-                                    <i class="fas fa-heart heart-filled" style="display:none;"></i>
+                                    @endif
                                 </button>
                             </form>
                             <br>
@@ -495,13 +517,24 @@
                             </button>
                         </div>
                         <div class="product-info">
-                            <form action="{{ route('favoritar') }}" method="POST">
-                                @csrf
+                            @php
+                            // Verifique se o produto já foi favoritado
+                            $favoritoExistente = \App\Models\Favorito::where('user_id', auth()->id())
+                            ->where('id_mercado', 3) // ID do mercado
+                            ->where('id_produto', 37) // ID do produto
+                            ->exists();
+                            @endphp
+                            <form action="{{ $favoritoExistente ? route('favoritar_remover') : route('favoritar') }}" method="POST"> @csrf
                                 <input type="hidden" name="id_produto" value="37">
                                 <input type="hidden" name="id_mercado" value="3">
-                                <button class="btn btn-danger favorite-button">
+                                <button type="submit" class="btn btn-danger favorite-button">
+                                    @if($favoritoExistente)
+                                    <!-- Exibe o coração preenchido se for favorito -->
+                                    <i class="fas fa-heart heart-filled"></i>
+                                    @else
+                                    <!-- Exibe o coração vazio se não for favorito -->
                                     <i class="far fa-heart heart-empty"></i>
-                                    <i class="fas fa-heart heart-filled" style="display:none;"></i>
+                                    @endif
                                 </button>
                             </form>
                             <br>
@@ -600,13 +633,24 @@
                             </button>
                         </div>
                         <div class="product-info">
-                            <form action="{{ route('favoritar') }}" method="POST">
-                                @csrf
+                            @php
+                            // Verifique se o produto já foi favoritado
+                            $favoritoExistente = \App\Models\Favorito::where('user_id', auth()->id())
+                            ->where('id_mercado', 4) // ID do mercado
+                            ->where('id_produto', 37) // ID do produto
+                            ->exists();
+                            @endphp
+                            <form action="{{ $favoritoExistente ? route('favoritar_remover') : route('favoritar') }}" method="POST"> @csrf
                                 <input type="hidden" name="id_produto" value="37">
                                 <input type="hidden" name="id_mercado" value="4">
-                                <button class="btn btn-danger favorite-button">
+                                <button type="submit" class="btn btn-danger favorite-button">
+                                    @if($favoritoExistente)
+                                    <!-- Exibe o coração preenchido se for favorito -->
+                                    <i class="fas fa-heart heart-filled"></i>
+                                    @else
+                                    <!-- Exibe o coração vazio se não for favorito -->
                                     <i class="far fa-heart heart-empty"></i>
-                                    <i class="fas fa-heart heart-filled" style="display:none;"></i>
+                                    @endif
                                 </button>
                             </form>
                             <br>
@@ -705,13 +749,24 @@
                             </button>
                         </div>
                         <div class="product-info">
-                            <form action="{{ route('favoritar') }}" method="POST">
-                                @csrf
+                            @php
+                            // Verifique se o produto já foi favoritado
+                            $favoritoExistente = \App\Models\Favorito::where('user_id', auth()->id())
+                            ->where('id_mercado', 1) // ID do mercado
+                            ->where('id_produto', 38) // ID do produto
+                            ->exists();
+                            @endphp
+                            <form action="{{ $favoritoExistente ? route('favoritar_remover') : route('favoritar') }}" method="POST"> @csrf
                                 <input type="hidden" name="id_produto" value="38">
                                 <input type="hidden" name="id_mercado" value="1">
-                                <button class="btn btn-danger favorite-button">
+                                <button type="submit" class="btn btn-danger favorite-button">
+                                    @if($favoritoExistente)
+                                    <!-- Exibe o coração preenchido se for favorito -->
+                                    <i class="fas fa-heart heart-filled"></i>
+                                    @else
+                                    <!-- Exibe o coração vazio se não for favorito -->
                                     <i class="far fa-heart heart-empty"></i>
-                                    <i class="fas fa-heart heart-filled" style="display:none;"></i>
+                                    @endif
                                 </button>
                             </form>
                             <br>
@@ -811,13 +866,24 @@
                             </button>
                         </div>
                         <div class="product-info">
-                            <form action="{{ route('favoritar') }}" method="POST">
-                                @csrf
+                            @php
+                            // Verifique se o produto já foi favoritado
+                            $favoritoExistente = \App\Models\Favorito::where('user_id', auth()->id())
+                            ->where('id_mercado', 2) // ID do mercado
+                            ->where('id_produto', 38) // ID do produto
+                            ->exists();
+                            @endphp
+                            <form action="{{ $favoritoExistente ? route('favoritar_remover') : route('favoritar') }}" method="POST"> @csrf
                                 <input type="hidden" name="id_produto" value="38">
                                 <input type="hidden" name="id_mercado" value="2">
-                                <button class="btn btn-danger favorite-button">
+                                <button type="submit" class="btn btn-danger favorite-button">
+                                    @if($favoritoExistente)
+                                    <!-- Exibe o coração preenchido se for favorito -->
+                                    <i class="fas fa-heart heart-filled"></i>
+                                    @else
+                                    <!-- Exibe o coração vazio se não for favorito -->
                                     <i class="far fa-heart heart-empty"></i>
-                                    <i class="fas fa-heart heart-filled" style="display:none;"></i>
+                                    @endif
                                 </button>
                             </form>
                             <br>
@@ -917,13 +983,24 @@
                             </button>
                         </div>
                         <div class="product-info">
-                            <form action="{{ route('favoritar') }}" method="POST">
-                                @csrf
+                            @php
+                            // Verifique se o produto já foi favoritado
+                            $favoritoExistente = \App\Models\Favorito::where('user_id', auth()->id())
+                            ->where('id_mercado', 3) // ID do mercado
+                            ->where('id_produto', 38) // ID do produto
+                            ->exists();
+                            @endphp
+                            <form action="{{ $favoritoExistente ? route('favoritar_remover') : route('favoritar') }}" method="POST"> @csrf
                                 <input type="hidden" name="id_produto" value="38">
                                 <input type="hidden" name="id_mercado" value="3">
-                                <button class="btn btn-danger favorite-button">
+                                <button type="submit" class="btn btn-danger favorite-button">
+                                    @if($favoritoExistente)
+                                    <!-- Exibe o coração preenchido se for favorito -->
+                                    <i class="fas fa-heart heart-filled"></i>
+                                    @else
+                                    <!-- Exibe o coração vazio se não for favorito -->
                                     <i class="far fa-heart heart-empty"></i>
-                                    <i class="fas fa-heart heart-filled" style="display:none;"></i>
+                                    @endif
                                 </button>
                             </form>
                             <br>
@@ -1023,13 +1100,24 @@
                             </button>
                         </div>
                         <div class="product-info">
-                            <form action="{{ route('favoritar') }}" method="POST">
-                                @csrf
+                            @php
+                            // Verifique se o produto já foi favoritado
+                            $favoritoExistente = \App\Models\Favorito::where('user_id', auth()->id())
+                            ->where('id_mercado', 4) // ID do mercado
+                            ->where('id_produto', 38) // ID do produto
+                            ->exists();
+                            @endphp
+                            <form action="{{ $favoritoExistente ? route('favoritar_remover') : route('favoritar') }}" method="POST"> @csrf
                                 <input type="hidden" name="id_produto" value="38">
                                 <input type="hidden" name="id_mercado" value="4">
-                                <button class="btn btn-danger favorite-button">
+                                <button type="submit" class="btn btn-danger favorite-button">
+                                    @if($favoritoExistente)
+                                    <!-- Exibe o coração preenchido se for favorito -->
+                                    <i class="fas fa-heart heart-filled"></i>
+                                    @else
+                                    <!-- Exibe o coração vazio se não for favorito -->
                                     <i class="far fa-heart heart-empty"></i>
-                                    <i class="fas fa-heart heart-filled" style="display:none;"></i>
+                                    @endif
                                 </button>
                             </form>
                             <br>
